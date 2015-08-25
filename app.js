@@ -55,10 +55,11 @@ $(document).ready(function() {
 
             // Push the result out to our unitLibrary global variable.
             unitLibrary = cards;
+            populate(unitLibrary);
         });
     }
 
-    function presto(meh) {
+    function populate(units) {
         
         rarities = {
             0: "Common",
@@ -68,18 +69,20 @@ $(document).ready(function() {
             4: "Legendary"
         };
 
-        console.log(meh.name, meh.types);
-
-        $(".units").append([
-            "<h5>","Name: ", meh.name, "</h6>",
-            "<p>", meh.types.join(" "), "</p>",
-            "<ul>Cost:",
-            "<li>", meh.cost.gold, " gold", "</li>",
-            "<li>", meh.cost.crystal, " crystal", "</li>",
-            "<li>", meh.cost.wood, " wood", "</li>",
-            "</ul>",
-            "<p>", rarities[meh.rarity], "</p>"
-            ].join(""));
+        for (var i = 0 ; i < units.length ; i++) {
+            var unit = units[i];
+            console.log(unit.name, unit.types);
+            $(".units").append([
+                "<h5>","Name: ", unit.name, "</h6>",
+                "<p>", unit.types.join(" "), "</p>",
+                "<ul>Cost:",
+                "<li>", unit.cost.gold, " gold", "</li>",
+                "<li>", unit.cost.crystal, " crystal", "</li>",
+                "<li>", unit.cost.wood, " wood", "</li>",
+                "</ul>",
+                "<p>", rarities[unit.rarity], "</p>"
+                ].join(""));
+        }
     }
 
     // Event handlers.
@@ -101,9 +104,7 @@ $(document).ready(function() {
             }
         });
         $('.units').empty();
-        for (var k = 0 ; k < filteredUnits.length ; k ++) {
-            presto(filteredUnits[k]);
-        }
+        populate(filteredUnits);
 
     });
     getUnits();
