@@ -85,8 +85,6 @@ $(document).ready(function() {
     // Event handlers.
     $('button').on('click', function() {
         $this = $(this);
-        console.log("clicked", $this.data("resourceType"), "button");
-        $('.units').empty();
         $this.toggleClass('button-primary');
 
         activeButtons = $('.button-primary');
@@ -94,7 +92,6 @@ $(document).ready(function() {
         for (var i = 0 ; i < activeButtons.length ; i++) {
             activeResources.push($(activeButtons[i]).data("resourceType"));
         }
-        console.log('Active resources:', activeResources);
 
         var filteredUnits = unitLibrary.filter(function(unit) {
             for (var j = 0 ; j < activeResources.length ; j ++) {
@@ -103,6 +100,7 @@ $(document).ready(function() {
                 }
             }
         });
+        $('.units').empty();
         for (var k = 0 ; k < filteredUnits.length ; k ++) {
             presto(filteredUnits[k]);
         }
