@@ -23,7 +23,7 @@ $(document).ready(function() {
                 var types = [];
                 var card = {
                     "name": attributes.name,
-                    "cost": {"g": attributes.g, "c": attributes.c, "w": attributes.w},
+                    "cost": {"gold": attributes.g, "crystal": attributes.c, "wood": attributes.w},
                     "edition": attributes.edition,
                     "id": attributes.id,
                     "rarity": attributes.rarity
@@ -70,16 +70,32 @@ $(document).ready(function() {
 
         console.log(meh.name, meh.types);
 
-        $(".container").append([
+        $(".units").append([
             "<h5>","Name: ", meh.name, "</h6>",
             "<p>", meh.types.join(" "), "</p>",
             "<ul>Cost:",
-            "<li>", meh.cost.g, " gold", "</li>",
-            "<li>", meh.cost.c, " crystal", "</li>",
-            "<li>", meh.cost.w, " wood", "</li>",
+            "<li>", meh.cost.gold, " gold", "</li>",
+            "<li>", meh.cost.crystal, " crystal", "</li>",
+            "<li>", meh.cost.wood, " wood", "</li>",
             "</ul>",
             "<p>", rarities[meh.rarity], "</p>"
             ].join(""));
     }
+
+    // Event handlers
+    $('button').on('click', function() {
+        $this = $(this);
+        console.log("clicked", $this.data("resourceType"), "button");
+        $('.units').empty();
+        $this.toggleClass('button-primary');
+
+        activeButtons = $('.button-primary');
+        activeResources = [];
+        for (var i = 0 ; i < activeButtons.length ; i++) {
+            activeResources.push($(activeButtons[i]).data("resourceType"));
+        }
+        console.log('Active resources:', activeResources);
+
+    });
     getUnits();
 });
