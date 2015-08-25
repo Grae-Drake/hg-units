@@ -1,1 +1,1 @@
-This is a simple unit viewer for [Highgrounds](http://www.highgroundsgame.com/) built with jQuery and [Skeleton](http://getskeleton.com/#intro).
+A simple unit viewer for [Highgrounds](http://www.highgroundsgame.com/) built with jQuery and [Skeleton](http://getskeleton.com/#intro).
