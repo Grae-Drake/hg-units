@@ -81,11 +81,11 @@ $(document).ready(function() {
             for (var k = 0 ; k < unit.actions.length ; k++) {
                 var action = unit.actions[k];
 
-                // Have to deal with weird values like -9999 for "X"
-                // and -1000 for frail and dormant.
+                // Deal with weird values like -9999 for "X" and -1000 for
+                // actions like frail and dormant.
                 var value = action.value === "-9999" ? "X" :
                             action.value === "-1000" ? "" :
-                                       action.value;
+                                             action.value;
                 var type = action.type;
 
                 if (unit.actions[k].location === "battle") {
