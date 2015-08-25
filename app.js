@@ -11,14 +11,16 @@ $(document).ready(function() {
             cardJson = xmlToJson(xml);
 
             // Build an object from the JSON data holding all cards
+            // Omit the first placeholder unit
             rawCards = cardJson.data.CARDLIST.CARD;
             console.dir(rawCards);
             var cards = [];
-            for (var i = 0 ; i < rawCards.length ; i++) {
+            for (var i = 1 ; i < rawCards.length ; i++) {
                 var rawCard = rawCards[i];
                 var name = rawCard.attributes.name;
                 var attributes = rawCard.attributes;
                 var actions = [];
+                var types = [];
                 var card = {
                     "name": attributes.name,
                     "cost": {"g": attributes.g, "c": attributes.c, "w": attributes.w},
@@ -34,17 +36,50 @@ $(document).ready(function() {
                     }
                     card["actions"] = actions;
                 }
+
+                // Each card can have one or more types
+                if (rawCard.hasOwnProperty("TYPE")) {
+                    if ($.isArray(rawCard.TYPE)) {
+                        for (var k = 0 ; k < rawCard.TYPE.length ; k++) {
+                            types.push(rawCard.TYPE[k]["#text"]);
+                        }
+                    } else if (typeof(rawCard.TYPE) === "object") {
+                        types.push(rawCard.TYPE["#text"]);
+                    }
+
+                    card["types"] = types;
+                }
                 cards.push(card);
             }
-            for (var k in cards) {
-                presto(cards[k]);
+            console.dir(cards);
+            for (var l in cards) {
+                presto(cards[l]);
             }
         });
     }
 
     function presto(meh) {
-        console.log(meh);
-        $("body").append("<p>" + JSON.stringify(meh) + "</p>");
+        
+        rarities = {
+            0: "Common",
+            1: "Uncommon",
+            2: "Rare",
+            3: "Ultra Rare",
+            4: "Legendary"
+        };
+
+        console.log(meh.name, meh.types);
+
+        $(".container").append([
+            "<h5>","Name: ", meh.name, "</h6>",
+            "<p>", meh.types.join(" "), "</p>",
+            "<ul>Cost:",
+            "<li>", meh.cost.g, " gold", "</li>",
+            "<li>", meh.cost.c, " crystal", "</li>",
+            "<li>", meh.cost.w, " wood", "</li>",
+            "</ul>",
+            "<p>", rarities[meh.rarity], "</p>"
+            ].join(""));
     }
     getUnits();
 });
