@@ -75,7 +75,26 @@ $(document).ready(function() {
 
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
-            console.log(unit.name, unit.types);
+            console.log(unit.name, unit);
+            var frontRow = [];
+            var backRow = [];
+            for (var k = 0 ; k < unit.actions.length ; k++) {
+                var action = unit.actions[k];
+
+                // Have to deal with weird values like -9999 for "X"
+                // and -1000 for frail and dormant.
+                var value = action.value === "-9999" ? "X" :
+                            action.value === "-1000" ? "" :
+                                       action.value;
+                var type = action.type;
+
+                if (unit.actions[k].location === "battle") {
+                    frontRow.push(["<li>", value, " ", type, "</li>" ].join(""));
+                }
+                else if (unit.actions[k].location === "home") {
+                    backRow.push(["<li>", value, " ", type, "</li>" ].join(""));
+                }
+            }
             $(".units").append([
                 "<h5>","Name: ", unit.name, "</h6>",
                 "<p>", unit.types.join(" "), "</p>",
@@ -84,7 +103,9 @@ $(document).ready(function() {
                 "<li>", unit.cost.crystal, " crystal", "</li>",
                 "<li>", unit.cost.wood, " wood", "</li>",
                 "</ul>",
-                "<p>", rarities[unit.rarity], "</p>"
+                "<p>", rarities[unit.rarity], "</p>",
+                "<ul>Front Row:", frontRow.join(""), "</ul>",
+                "<ul>Back Row:", backRow.join(""), "</ul>"
                 ].join(""));
         }
     }
