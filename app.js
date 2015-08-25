@@ -108,7 +108,7 @@ $(document).ready(function() {
         });
     }
     // Event handlers.
-    $('button').on('click', function() {
+    $('button.resource').on('click', function() {
         $(this).toggleClass('button-primary');
 
         activeResources = getActiveResources();
