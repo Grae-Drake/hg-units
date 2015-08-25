@@ -1,0 +1,26 @@
+{
+  "name": "hg-units",
+  "version": "0.0.0",
+  "description": "Unit viewer for Highgrounds game \"www.highgroundsgame.com\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grae-Drake/hg-units.git"
+  },
+  "keywords": [
+    "Highgrounds"
+  ],
+  "author": "Grae Drake",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grae-Drake/hg-units/issues"
+  },
+  "homepage": "https://github.com/Grae-Drake/hg-units#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "chai-http": "^1.0.0"
+  }
+}
