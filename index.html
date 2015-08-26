@@ -35,55 +35,54 @@
           <button class="resource button-primary twelve columns" data-resource-type="wood">Wood</button>
         </div>
       </div>
-      <div class="nine columns units">
+      <div class="nine columns units"></div>
         
-        <!-- Unit template -->
-        <script id="unit-card" type="text/x-handlebars-template">
-          <div class="unit">
-            <div class="unit-top row">
-              <div class="one-third column unit-sprite">
-                <img src="outline.png">
-              </div>
-              <div class="two-thirds column unit-top-text">
-                <p class="unit-name"> {{ toUpperCase name }} </p>
-                <p class="unit-types">
-                  {{#each types }}
-                    {{this}}
-                  {{/each}}
-                </p>
-                <p class="unit-cost">
-                  {{#if cost.gold }}
-                    {{ cost.gold }} Gold
-                  {{/if}}
-                  {{#if cost.crystal}}
-                    {{ cost.crystal }} Crystal
-                  {{/if}}
-                  {{#if cost.wood}}
-                    {{ cost.wood }} Wood
-                  {{/if}}
-                </p>
-                <p class="unit-rarity"> {{ rarity }} </p>
-              </div>
+      <!-- Unit template -->
+      <script id="unit-card" type="text/x-handlebars-template">
+        <div class="unit">
+          <div class="unit-top row">
+            <div class="one-third column unit-sprite">
+              <img src="outline.png">
             </div>
-            <div class="unit-bottom row">
-              <div class="unit-back-row six columns">
-                <p class="unit-row-title">Back Row</p>
-                {{#each homeActions}}
-                  <p class="unit-action"> {{ this.value }} {{ toUpperCase this.type }} </p>
+            <div class="two-thirds column unit-top-text">
+              <p class="unit-name"> {{ toUpperCase name }} </p>
+              <p class="unit-types">
+                {{#each types }}
+                  {{this}}
                 {{/each}}
-              </div>
-              <div class="unit-front-row six columns">
-                <p class="unit-row-title">Front Row</p>
-                {{#each battleActions}}
-                  <p class="unit-action"> {{ this.value }} {{ toUpperCase this.type }} </p>
-                {{/each}}
-              </div>
+              </p>
+              <p class="unit-cost">
+                {{#if cost.gold }}
+                  {{ cost.gold }} Gold
+                {{/if}}
+                {{#if cost.crystal}}
+                  {{ cost.crystal }} Crystal
+                {{/if}}
+                {{#if cost.wood}}
+                  {{ cost.wood }} Wood
+                {{/if}}
+              </p>
+              <p class="unit-rarity"> {{ rarity }} </p>
             </div>
           </div>
-        </script>
-        <!-- End unit template -->
+          <div class="unit-bottom row">
+            <div class="unit-back-row six columns">
+              <p class="unit-row-title">Back Row</p>
+              {{#each homeActions}}
+                <p class="unit-action"> {{ this.value }} {{ toUpperCase this.type }} </p>
+              {{/each}}
+            </div>
+            <div class="unit-front-row six columns">
+              <p class="unit-row-title">Front Row</p>
+              {{#each battleActions}}
+                <p class="unit-action"> {{ this.value }} {{ toUpperCase this.type }} </p>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </script>
+      <!-- End unit template -->
       
-      </div>
     </div>
   </div>
   <footer>All images copyright 2012 Heart Shaped Games, all rights reserved. Now go play <a href="http://www.highgroundsgame.com">Highgrounds</a>.</footer>

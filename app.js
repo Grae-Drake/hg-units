@@ -54,12 +54,19 @@ $(document).ready(function() {
                     var action = rawCard.ACTION[j].attributes;
                     var target = action.location === "home" ? homeActions : battleActions;
                     
-                    // Deal with weird values like -9999 for "X" and -1000 for
-                    // actions like frail and dormant.
+                    // Deal with weird action values like -9999 for "X" and
+                    // -1000 for actions like frail and dormant.
                     var actionValue = action.value === "-9999" ? "X" :
                                       action.value === "-1000" ? "" :
                                       action.value;
-                    target.push({"type": action.type, "value": actionValue});
+
+                    // Deal with weird action types like Windfall
+                    var actionType = action.type.indexOf("windfall") > -1 ? "windfall" :
+                                     action.type.indexOf("duorainer") > -1 ? "duorainer" :
+                                     action.type.indexOf("duoRainer") > -1 ? "duorainer" :
+                                     action.type;
+
+                    target.push({"type": actionType, "value": actionValue});
                 }
                 card["homeActions"] = homeActions;
                 card["battleActions"] = battleActions;
@@ -81,40 +88,6 @@ $(document).ready(function() {
             cards.push(card);
         }
         return cards;
-    }
-
-    function populatePage(units) {
-
-        for (var i = 0 ; i < units.length ; i++) {
-            var unit = units[i];
-            // console.log(unit.name, unit);
-            var frontRow = [];
-            var backRow = [];
-            for (var k = 0 ; k < unit.homeActions.length ; k++) {
-                var action = unit.homeActions[k];
-
-                // Deal with weird values like -9999 for "X" and -1000 for
-                // actions like frail and dormant.
-                var value = action.value === "-9999" ? "X" :
-                            action.value === "-1000" ? "" :
-                                             action.value;
-                var type = action.type;
-
-            }
-            $(".units").append([
-                "<h5>","Name: ", unit.name, "</h6>",
-                "<p>", unit.types.join(" "), "</p>",
-                "<ul>Cost:",
-                "<li>", unit.cost.gold, " gold", "</li>",
-                "<li>", unit.cost.crystal, " crystal", "</li>",
-                "<li>", unit.cost.wood, " wood", "</li>",
-                "</ul>",
-                "<p>", unit.rarity, "</p>",
-                "<ul>Front Row:", frontRow.join(""), "</ul>",
-                "<ul>Back Row:", backRow.join(""), "</ul>"
-                ].join(""));
-            if (unit.name === "Dante") {console.log(JSON.stringify(unit));}
-        }
     }
 
     function getActiveResources() {
@@ -147,25 +120,19 @@ $(document).ready(function() {
     getUnits();
 
     // Templating.
-    Handlebars.registerHelper('toUpperCase', function(str) {
-        return str.toUpperCase();
-    });
-    var dante = {"name": "Dante",
-                 "cost": {"gold":0,
-                         "crystal":4,
-                         "wood":0},
-                 "edition" :"3.5",
-                 "id" :"card0000217",
-                 "rarity": "Common",
-                 "homeActions": [{"type":"defense", "value":"2"},
-                                 {"type":"gold", "value":"1"}],
-                 "battleActions": [{"type":"attack", "value":"4"},
-                                   {"type":"crystal", "value":"1"}],
-                 "types": ["Wraith","Golem"]
-                };
+    function populatePage(units) {
 
+        Handlebars.registerHelper('toUpperCase', function(str) {
+            return str.toUpperCase();
+        });
+        var theTemplateScript = $("#unit-card").html();
+        var theTemplate = Handlebars.compile(theTemplateScript);
 
-    var theTemplateScript = $("#unit-card").html();
-    var theTemplate = Handlebars.compile(theTemplateScript);
-    $(".units").append(theTemplate(dante));
+        for (var i = 0 ; i < units.length ; i++) {
+            var unit = units[i];
+            console.log(unit.name, unit);
+        $(".units").append(theTemplate(unit));
+        }
+
+    }
 });

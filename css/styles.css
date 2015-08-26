@@ -1,5 +1,7 @@
 .unit {
     width: 260px;
+    margin: 0 2px 0 2px;
+    min-height: 210px;
     border-radius: 8px;
     box-shadow: 0 0 0 1px black;
     display: inline-block;
