@@ -7,7 +7,7 @@ $(document).ready(function() {
         var indexURL = "https://raw.githubusercontent.com/highgrounds/HighgroundsAssets/master/data/1stEdition.xml";
         var unitData = $.get(indexURL, function() {
             unitLibrary = parseHighgroundsXml(unitData);
-            populatePage(unitLibrary);
+            // populatePage(unitLibrary);
         });
     }
     
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
-            console.log(unit.name, unit);
+            // console.log(unit.name, unit);
             var frontRow = [];
             var backRow = [];
             for (var k = 0 ; k < unit.actions.length ; k++) {
@@ -138,4 +138,17 @@ $(document).ready(function() {
 
     });
     getUnits();
+
+    // Templating.
+    var dante = {"name": "DANTE",
+                 // "type": ["Wraith", "Golem"],
+                 "cost": "4 Crystal"
+                 // "rarity": "Common",
+                 // "actions back": ["2 Defense", "1 Gold"],
+                 // "actions front": ["4 Attack", "1 Crystal"]
+    };
+
+    var theTemplateScript = $("#unit-card").html();
+    var theTemplate = Handlebars.compile(theTemplateScript);
+    $(".units").append(theTemplate(dante));
 });
