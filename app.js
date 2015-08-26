@@ -37,7 +37,7 @@ $(document).ready(function() {
                         "wood": parseInt(attributes.w, 10)},
                 "edition": attributes.edition,
                 "id": attributes.id,
-                "rarity": attributes.rarity
+                "rarity": parseInt(attributes.rarity, 10)
             };
 
             // Each card can one or more actions.
