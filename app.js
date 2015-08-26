@@ -23,12 +23,20 @@ $(document).ready(function() {
         // Omit the first placeholder unit.
         var cards = [];
         rawCards = cardJson.data.CARDLIST.CARD;
+        rarities = {
+            0: "Common",
+            1: "Uncommon",
+            2: "Rare",
+            3: "Ultra Rare",
+            4: "Legendary"
+        };
 
         for (var i = 1 ; i < rawCards.length ; i++) {
             var rawCard = rawCards[i];
             var name = rawCard.attributes.name;
             var attributes = rawCard.attributes;
-            var actions = [];
+            var homeActions = [];
+            var battleActions = [];
             var types = [];
             var card = {
                 "name": attributes.name,
@@ -37,15 +45,25 @@ $(document).ready(function() {
                         "wood": parseInt(attributes.w, 10)},
                 "edition": attributes.edition,
                 "id": attributes.id,
-                "rarity": parseInt(attributes.rarity, 10)
+                "rarity": rarities[parseInt(attributes.rarity, 10)]
             };
 
-            // Each card can one or more actions.
+            // Each card can one or more home or battle actions.
             if (rawCard.hasOwnProperty("ACTION")) {
                 for (var j = 0 ; j < rawCard.ACTION.length ; j ++) {
-                    actions.push(rawCard.ACTION[j].attributes);
+                    var action = rawCard.ACTION[j].attributes;
+                    var target = action.location === "home" ? homeActions : battleActions;
+                    
+                    // Deal with weird values like -9999 for "X" and -1000 for
+                    // actions like frail and dormant.
+                    var actionValue = action.value === "-9999" ? "X" :
+                                      action.value === "-1000" ? "" :
+                                      action.value;
+                    target.push({"type": action.type, "value": actionValue});
                 }
-                card["actions"] = actions;
+                card["homeActions"] = homeActions;
+                card["battleActions"] = battleActions;
+
             }
 
             // Each card can have one or more types.
@@ -66,22 +84,14 @@ $(document).ready(function() {
     }
 
     function populatePage(units) {
-        
-        rarities = {
-            0: "Common",
-            1: "Uncommon",
-            2: "Rare",
-            3: "Ultra Rare",
-            4: "Legendary"
-        };
 
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
             // console.log(unit.name, unit);
             var frontRow = [];
             var backRow = [];
-            for (var k = 0 ; k < unit.actions.length ; k++) {
-                var action = unit.actions[k];
+            for (var k = 0 ; k < unit.homeActions.length ; k++) {
+                var action = unit.homeActions[k];
 
                 // Deal with weird values like -9999 for "X" and -1000 for
                 // actions like frail and dormant.
@@ -90,12 +100,6 @@ $(document).ready(function() {
                                              action.value;
                 var type = action.type;
 
-                if (unit.actions[k].location === "battle") {
-                    frontRow.push(["<li>", value, " ", type, "</li>" ].join(""));
-                }
-                else if (unit.actions[k].location === "home") {
-                    backRow.push(["<li>", value, " ", type, "</li>" ].join(""));
-                }
             }
             $(".units").append([
                 "<h5>","Name: ", unit.name, "</h6>",
@@ -105,7 +109,7 @@ $(document).ready(function() {
                 "<li>", unit.cost.crystal, " crystal", "</li>",
                 "<li>", unit.cost.wood, " wood", "</li>",
                 "</ul>",
-                "<p>", rarities[unit.rarity], "</p>",
+                "<p>", unit.rarity, "</p>",
                 "<ul>Front Row:", frontRow.join(""), "</ul>",
                 "<ul>Back Row:", backRow.join(""), "</ul>"
                 ].join(""));
@@ -143,21 +147,21 @@ $(document).ready(function() {
     getUnits();
 
     // Templating.
-    var dante = {"name":"Dante",
-                 "cost":{"gold":0,
+    Handlebars.registerHelper('toUpperCase', function(str) {
+        return str.toUpperCase();
+    });
+    var dante = {"name": "Dante",
+                 "cost": {"gold":0,
                          "crystal":4,
                          "wood":0},
-                 "edition":"3.5",
-                 "id":"card0000217",
-                 "rarity":"0",
-                 "actions":[
-                    {"location":"battle",
-                     "type":"attack",
-                     "value":"4"},
-                    {"location":"home",
-                    "type":"defense",
-                    "value":"2"}],
-                 "types":["Wraith","Golem"]
+                 "edition" :"3.5",
+                 "id" :"card0000217",
+                 "rarity": "Common",
+                 "homeActions": [{"type":"defense", "value":"2"},
+                                 {"type":"gold", "value":"1"}],
+                 "battleActions": [{"type":"attack", "value":"4"},
+                                   {"type":"crystal", "value":"1"}],
+                 "types": ["Wraith","Golem"]
                 };
 
 
