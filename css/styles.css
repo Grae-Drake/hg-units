@@ -1,0 +1,85 @@
+.unit {
+    width: 260px;
+    outline: 1px solid black;
+    display: inline-block; 
+}
+
+.unit-top {
+    outline: 1px solid green;
+}
+
+.unit-bottom {
+
+}
+
+.unit-sprite {
+
+}
+
+.unit-top-text {
+
+}
+
+.unit-name {
+    font-size: 2em;
+    font-weight: 800;
+    margin: 0px;
+}
+
+.unit-types {
+    font-size: .8em;
+    font-weight: 800;
+    margin: 0px;
+}
+
+.unit-cost {
+    font-size: .8em;
+    margin: 0 0 0 16px;
+}
+
+.unit-rarity {
+    font-size: .8em;
+    margin: 0 0 4px 16px;
+}
+
+.unit-bottom {
+    padding: 0 0 10px 0;
+}
+
+.unit-back-row {
+    
+}
+
+.unit-front-row {
+
+}
+
+.unit-row-title {
+    text-align: center;
+    margin: 0 0 4px 0;
+}
+
+.unit-action {
+    margin: 0 0 8px 0;
+    padding: 0 0 0 16px;
+    font-weight: 800;
+    background-color: black;
+    color: white;
+}
+
+.action-defense {
+
+}
+
+.action-gold {
+
+}
+
+.action-attack {
+
+}
+
+.action-crystal {
+
+}
+
