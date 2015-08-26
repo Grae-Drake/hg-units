@@ -45,9 +45,19 @@
                 <img src="outline.png">
               </div>
               <div class="two-thirds column unit-top-text">
-                <p class="unit-name"> {{ "name" }} </p>
+                <p class="unit-name"> {{ name }} </p>
                 <p class="unit-types">Wraith Golem</p>
-                <p class="unit-cost"> {{ "cost" }} </p>
+                <p class="unit-cost">
+                  {{#if cost.gold}}
+                    {{ cost.gold }} Gold
+                  {{/if}}
+                  {{#if cost.crystal}}
+                    {{ cost.crystal }} Crystal
+                  {{/if}}
+                  {{#if cost.wood}}
+                    {{ cost.wood }} Wood
+                  {{/if}}
+                </p>
                 <p class="unit-rarity">Common</p>
               </div>
             </div>

@@ -7,7 +7,7 @@ $(document).ready(function() {
         var indexURL = "https://raw.githubusercontent.com/highgrounds/HighgroundsAssets/master/data/1stEdition.xml";
         var unitData = $.get(indexURL, function() {
             unitLibrary = parseHighgroundsXml(unitData);
-            // populatePage(unitLibrary);
+            populatePage(unitLibrary);
         });
     }
     
@@ -32,7 +32,9 @@ $(document).ready(function() {
             var types = [];
             var card = {
                 "name": attributes.name,
-                "cost": {"gold": attributes.g, "crystal": attributes.c, "wood": attributes.w},
+                "cost": {"gold": parseInt(attributes.g, 10),
+                         "crystal": parseInt(attributes.c, 10),
+                        "wood": parseInt(attributes.w, 10)},
                 "edition": attributes.edition,
                 "id": attributes.id,
                 "rarity": attributes.rarity
@@ -107,6 +109,7 @@ $(document).ready(function() {
                 "<ul>Front Row:", frontRow.join(""), "</ul>",
                 "<ul>Back Row:", backRow.join(""), "</ul>"
                 ].join(""));
+            if (unit.name === "Dante") {console.log(JSON.stringify(unit));}
         }
     }
 
@@ -140,13 +143,23 @@ $(document).ready(function() {
     getUnits();
 
     // Templating.
-    var dante = {"name": "DANTE",
-                 // "type": ["Wraith", "Golem"],
-                 "cost": "4 Crystal"
-                 // "rarity": "Common",
-                 // "actions back": ["2 Defense", "1 Gold"],
-                 // "actions front": ["4 Attack", "1 Crystal"]
-    };
+    var dante = {"name":"Dante",
+                 "cost":{"gold":0,
+                         "crystal":4,
+                         "wood":0},
+                 "edition":"3.5",
+                 "id":"card0000217",
+                 "rarity":"0",
+                 "actions":[
+                    {"location":"battle",
+                     "type":"attack",
+                     "value":"4"},
+                    {"location":"home",
+                    "type":"defense",
+                    "value":"2"}],
+                 "types":["Wraith","Golem"]
+                };
+
 
     var theTemplateScript = $("#unit-card").html();
     var theTemplate = Handlebars.compile(theTemplateScript);
