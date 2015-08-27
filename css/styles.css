@@ -111,3 +111,44 @@
 footer {
     text-align: center;
 }
+
+/* Action colors */
+.wood, .growth {
+    background-color: #7ab42b;
+}
+
+.burnout, .dormant, .frail, .renegade, .knockout, .reaper, .vanish {
+    background-color: #333333;
+}
+
+.arrow, .wound, .fireball, .flare, .drain, .undercut, .snipe {
+    background-color: #bbbbbb;
+}
+
+.defense, .protect, .toxic, .golemShield, .guardian, .tribalHex, .fortify {
+    background-color: #79a0fc;
+}
+
+.recruit, .transform, .matriarch, .reanimate {
+    background-color: #bf8b5b;
+}
+
+.attack, .honor, .rampage, .bolt, .deathBolt, .atkSquire, .revenge, .wolfPack, .dogPack, .foxPack, .spearhead, .flourish, .frenzy, .gamble, .liege {
+    background-color: #ba5c3d;
+}
+
+.gold, .greed, .charity, .tribalDues, .tax {
+    background-color: #e6c039;
+}
+
+.crystal, .windfall {
+    background-color: #3497e3;
+}
+
+.healing, .paladin {
+    background-color: #e6c039;
+}
+
+.farmerKing, .knightKing, .skelKing, .dragonQueen, .fighterKing, .barbKing, .barbBerserk, .duoRaeus, .duorainer, .duoTydus, .steal, .zealot, .totemfarm, .spiritLord, .golemSurge, .taskmaster, .siege, .duoRandal, .bloodRage, .stoneWall, .stoneRam, .elemental {
+    background-color: #b528f0;
+}

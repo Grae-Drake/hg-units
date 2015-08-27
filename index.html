@@ -62,13 +62,13 @@
           <div class="unit-back-row six columns">
             <p class="unit-row-title">Back Row</p>
             {{#each homeActions}}
-              <p class="unit-action"> {{ this.value }} {{ toUpperCase this.type }} </p>
+              <p class="unit-action {{ this.type }} "> {{ this.value }} {{ toUpperCase this.type }} </p>
             {{/each}}
           </div>
           <div class="unit-front-row six columns">
             <p class="unit-row-title">Front Row</p>
             {{#each battleActions}}
-              <p class="unit-action"> {{ this.value }} {{ toUpperCase this.type }} </p>
+              <p class="unit-action {{ this.type }} "> {{ this.value }} {{ toUpperCase this.type }} </p>
             {{/each}}
           </div>
         </div>
