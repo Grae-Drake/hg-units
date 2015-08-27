@@ -13,6 +13,7 @@
 .units {
     display: inline-block;
     max-width: 800px;
+    min-height: 220px;
     margin: 0 0 0 136px;
 }
 
