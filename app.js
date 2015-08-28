@@ -1,3 +1,7 @@
+// Note: adding filtering by city resource.  Instead of having "actions" on
+// a city, you should give each city a straight "gold", "wood", "recruit", etc. property.
+
+
 var unitLibrary = [];
 var cityLibrary = [];
 $(document).ready(function() {
@@ -12,7 +16,8 @@ $(document).ready(function() {
             unitLibrary = extractUnitData(parseHighgroundsXml(hgData));
             cityLibrary = extractCityData(parseHighgroundsXml(hgData));
             console.log("cityLibrary:", cityLibrary);
-            populatePage(unitLibrary, cityLibrary);
+            populateCities(cityLibrary);
+            populateUnits(unitLibrary);
 
         });
     }
@@ -147,58 +152,65 @@ $(document).ready(function() {
         return cards;
     }
 
-    function getActiveResources() {
+    function getActiveCities() {
         activeButtons = $('.button-primary');
-        activeResources = [];
+        activeCities = [];
         for (var i = 0 ; i < activeButtons.length ; i++) {
-            activeResources.push($(activeButtons[i]).data("resourceType"));
+            activeCities.push($(activeButtons[i]).data("cityTypes"));
         }
-        return activeResources;
+        console.log("activeCities", activeCities);
+        return activeCities;
     }
 
-    function filterUnits(unitLibrary, activeResources) {
+    function filterUnits(unitLibrary, activeCities) {
         return unitLibrary.filter(function(unit) {
-            for (var i = 0 ; i < activeResources.length ; i ++) {
+            for (var i = 0 ; i < activeCities.length ; i ++) {
+                
+                // Logic to filter unitlibrary and return a new array.
+                // unit.cost[resourcename]  should match city.action
+
+
+
                 if (unit.cost[activeResources[i]] > 0) {
                     return true;
                 }
             }
         });
     }
-    // Event handlers.
-    $('button.resource').on('click', function() {
-        $(this).toggleClass('button-primary');
-
-        activeResources = getActiveResources();
-        $('.units').empty();
-        populatePage(filterUnits(unitLibrary, activeResources));
-
-    });
-    getUnits();
 
     // Templating.
-    function populatePage(units, cities) {
 
-        // Populate units
+    function populateUnits(units) {
+
         var unitTemplateScript = $("#unit-card").html();
         var unitTemplate = Handlebars.compile(unitTemplateScript);
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
             $(".units").append(unitTemplate(unit));
         }
+    }
+    
+    function populateCities(cities) {
 
-        // Populate city buttons
         var cityTemplateScript = $("#city-button").html();
         var cityTemplate = Handlebars.compile(cityTemplateScript);
         for (var j = 0 ; j < cities.length ; j++) {
             var city = cities[j];
             $(".cities").append(cityTemplate(city));
         }
-
-
+        $('.city').on('click', function() {
+            $(this).toggleClass('button-primary');
+            activeCities = getActiveCities();
+            $('.units').empty();
+            populateUnits(filterUnits(unitLibrary, activeCities));
+        });
     }
-
+    
     Handlebars.registerHelper('toUpperCase', function(str) {
-                return str.toUpperCase();
+        return str.toUpperCase();
     });
+
+
+    // Go time.
+    getUnits();
 });

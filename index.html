@@ -34,7 +34,10 @@
 
     <!-- City template -->
     <script id="city-button" type="text/x-handlebars-template">
-      <button class="city {{ name }} {{#each types}}{{this}}{{/each}}">{{ name }}</button>
+      <button class="button-primary city"
+              data-resource-type="{{#each types}}{{ this }} {{/each}}">
+              {{ name }}
+      </button>
     </script>
 
     <div class="units"></div>
