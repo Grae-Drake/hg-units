@@ -8,10 +8,12 @@ $(document).ready(function() {
         var indexURL = 'https://raw.githubusercontent.com/highgrounds' +
                         '/HighgroundsAssets/master/data/1stEdition.xml';
         var hgData = $.get(indexURL, function() {
+
             unitLibrary = extractUnitData(parseHighgroundsXml(hgData));
             cityLibrary = extractCityData(parseHighgroundsXml(hgData));
             console.log("cityLibrary:", cityLibrary);
-            populatePage(unitLibrary);
+            populatePage(unitLibrary, cityLibrary);
+
         });
     }
     
@@ -175,18 +177,28 @@ $(document).ready(function() {
     getUnits();
 
     // Templating.
-    function populatePage(units) {
+    function populatePage(units, cities) {
 
-        Handlebars.registerHelper('toUpperCase', function(str) {
-            return str.toUpperCase();
-        });
-        var theTemplateScript = $("#unit-card").html();
-        var theTemplate = Handlebars.compile(theTemplateScript);
-
+        // Populate units
+        var unitTemplateScript = $("#unit-card").html();
+        var unitTemplate = Handlebars.compile(unitTemplateScript);
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
-        $(".units").append(theTemplate(unit));
+            $(".units").append(unitTemplate(unit));
         }
 
+        // Populate city buttons
+        var cityTemplateScript = $("#city-button").html();
+        var cityTemplate = Handlebars.compile(cityTemplateScript);
+        for (var j = 0 ; j < cities.length ; j++) {
+            var city = cities[j];
+            $(".cities").append(cityTemplate(city));
+        }
+
+
     }
+
+    Handlebars.registerHelper('toUpperCase', function(str) {
+                return str.toUpperCase();
+    });
 });

@@ -23,11 +23,20 @@
     <div class="row">
       <h2 style="margin-top: 10%">Highgrounds Units</h2>
     </div>
+    <!-- Old buttons
     <aside class="buttons">
-          <button class="resource button-primary" data-resource-type="gold">Gold</button>
-          <button class="resource button-primary" data-resource-type="crystal">Crystal</button>
-          <button class="resource button-primary" data-resource-type="wood">Wood</button>
+      <button class="resource button-primary" data-resource-type="gold">Gold</button>
+      <button class="resource button-primary" data-resource-type="crystal">Crystal</button>
+      <button class="resource button-primary" data-resource-type="wood">Wood</button>
     </aside>
+    -->
+    <aside class="cities"></aside>
+
+    <!-- City template -->
+    <script id="city-button" type="text/x-handlebars-template">
+      <button class="city {{ name }} {{#each types}}{{this}}{{/each}}">{{ name }}</button>
+    </script>
+
     <div class="units"></div>
         
     <!-- Unit template -->
