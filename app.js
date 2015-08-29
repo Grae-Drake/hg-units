@@ -208,6 +208,9 @@ $(document).ready(function() {
             var unit = units[i];
             $(".units").append(unitTemplate(unit));
         }
+        $(".unit-sprite img").on("error abort", function() {
+            this.src="images/outline.png";
+        });
     }
     
     function populateCities(cities) {
