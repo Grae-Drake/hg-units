@@ -102,11 +102,9 @@ $(document).ready(function() {
     function extractUnitData(hgJson) {
 
         // Build an array of objects from the JSON data holding all units.
-        // Omit the first "unknown" placeholder unit.
+        var rawCards = hgJson.data.CARDLIST.CARD;
         var cards = [];
-        
-        // Rarity map from numbers to English.
-        rarities = {
+        var rarities = {
             0: "Common",
             1: "Uncommon",
             2: "Rare",
@@ -114,8 +112,7 @@ $(document).ready(function() {
             4: "Legendary"
         };
 
-        // Iterate over the raw unit data.
-        rawCards = hgJson.data.CARDLIST.CARD;
+        // Iterate over the raw unit data. Omit the first "unknown" placeholder unit.
         for (var i = 1 ; i < rawCards.length ; i++) {
             var rawCard = rawCards[i];
             var attributes = rawCard.attributes;
@@ -200,13 +197,20 @@ $(document).ready(function() {
 
     // Templating.
 
+    var unitTemplateScript = $("#unit-card").html();
+    var unitTemplate = Handlebars.compile(unitTemplateScript);
+    var cityTemplateScript = $("#city-button").html();
+    var cityTemplate = Handlebars.compile(cityTemplateScript);
+    Handlebars.registerHelper('toUpperCase', function(str) {
+        return str.toUpperCase();
+    });
+    
     function populateUnits(units) {
 
-        var unitTemplateScript = $("#unit-card").html();
-        var unitTemplate = Handlebars.compile(unitTemplateScript);
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
-            $(".units").append(unitTemplate(unit));
+            unit["cache"] = unit["cache"] || unitTemplate(unit);
+             $(".units").append(unit["cache"]);
         }
         $(".unit-sprite img").on("error abort", function() {
             this.src="images/outline.png";
@@ -215,11 +219,10 @@ $(document).ready(function() {
     
     function populateCities(cities) {
 
-        var cityTemplateScript = $("#city-button").html();
-        var cityTemplate = Handlebars.compile(cityTemplateScript);
         for (var j = 0 ; j < cities.length ; j++) {
             var city = cities[j];
-            $(".cities").append(cityTemplate(city));
+            city["cache"] = city["cache"] || cityTemplate(city);
+            $(".cities").append(city["cache"]);
         }
         $('.city').on('click', function() {
             $(this).toggleClass('button-primary');
@@ -229,9 +232,6 @@ $(document).ready(function() {
         });
     }
     
-    Handlebars.registerHelper('toUpperCase', function(str) {
-        return str.toUpperCase();
-    });
 
 
     // Go time.
