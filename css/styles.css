@@ -1,3 +1,59 @@
+body {
+    background:url(../images/hg-hero.png) top right no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+}
+
+body:after {
+    content: "";
+    background:
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    background-color: #131313;
+    background-size: 20px 20px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+    opacity: .5;
+}
+
+header {
+    color: #fff;
+    background-color: #111;
+}
+
+.navigation {
+    list-style: none;
+    margin:0;
+}
+
+.navigation a {
+    text-decoration: none;
+    float:right;
+}
+
+.navigation li {
+    color: #33C3F0;
+    margin: 0;
+    padding: 8px 0 8px 0;
+}
+
+.navigation li:hover {
+    color: #1EAEDB;
+}
+
+.hero h2 {
+    color: #fff;
+    text-shadow: 0 2px 4px #1e2835;
+}
+
 .buttons {
     width: 180px;
     vertical-align: top;
@@ -12,14 +68,14 @@
 
 .units {
     display: inline-block;
-    max-width: 800px;
-    min-height: 220px;
+    min-height: 500px;
     margin: 0 0 0 184px;
+    text-align: center
 }
 
 .unit {
     width: 260px;
-    margin: 0 2px 0 2px;
+    margin: 0 4px 2px 4px;
     min-height: 210px;
     border-radius: 8px;
     box-shadow: 0 0 0 1px black;
@@ -110,7 +166,13 @@
 }
 
 footer {
+    color: #fff;
+    background-color: #111;
     text-align: center;
+    margin: 0;
+    padding: 8px 32px 8px 32px;
+    position: relative;
+    bottom: 0;
 }
 
 /* Action colors */
