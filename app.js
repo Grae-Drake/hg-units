@@ -107,7 +107,7 @@ $(document).ready(function() {
             return 1;
         }
         else {return 0;}
-    };
+    }
 
     function extractUnitData(hgJson) {
 

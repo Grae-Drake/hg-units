@@ -66,11 +66,15 @@ header {
     min-width: 168px
 }
 
+.unit-wrapper {
+    text-align: center;
+}
+
 .units {
     display: inline-block;
     min-height: 500px;
     margin: 0 0 0 184px;
-    text-align: center
+    text-align: left;
 }
 
 .unit {
