@@ -1,20 +1,20 @@
 .buttons {
-    width: 126px;
+    width: 180px;
     vertical-align: top;
     display: inline-block;
     position: absolute;
     margin: 0;
 }
 
-.resource {
-    min-width: 118px
+.city {
+    min-width: 168px
 }
 
 .units {
     display: inline-block;
     max-width: 800px;
     min-height: 220px;
-    margin: 0 0 0 136px;
+    margin: 0 0 0 184px;
 }
 
 .unit {
