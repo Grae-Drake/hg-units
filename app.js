@@ -1,6 +1,3 @@
-// Note: adding filtering by city resource.  Instead of having "actions" on
-// a city, you should give each city a straight "gold", "wood", "recruit", etc. property.
-
 
 var unitLibrary = [];
 var cityLibrary = [];
@@ -15,6 +12,7 @@ $(document).ready(function() {
 
             unitLibrary = extractUnitData(parseHighgroundsXml(hgData));
             cityLibrary = extractCityData(parseHighgroundsXml(hgData));
+
             console.log("cityLibrary:", cityLibrary);
             populateCities(cityLibrary);
             populateUnits(unitLibrary);
@@ -37,10 +35,6 @@ $(document).ready(function() {
         var cities = [];
         rawCities = hgJson.data.CITYLIST.CITY;
         console.log(rawCities);
-        // CITY.ACTION is an array of objects for gold, crystal, recruit etc.
-        // ACTION.attributes each has .location, .type, and .value.
-        // CITY.TYPE is an array of objects with a .#text of, e.g., "Human" and "Magic".
-        // CITY.attributes includes .edition, .groundType, .id, .name, and .rarity.
 
         // Omit the first "dummy" unit.
         for (var i = 1 ; i < rawCities.length ; i++) {
@@ -96,8 +90,24 @@ $(document).ready(function() {
             });
         }
 
+        // sort cities
+
+        cities.sort(compareCities);
         return cities;
     }
+
+    function compareCities(a,b) {
+        var cityOrder = ["Titan Ridge", "Dwila", "Sacred Woods", "The Helm",
+                         "Crystal Camp", "Outfitter", "The Den", "The Grotto",
+                         "Forest Village", "Shadow Pylon"];
+        if (cityOrder.indexOf(a.name) < cityOrder.indexOf(b.name)) {
+            return -1;
+        }
+        else if (cityOrder.indexOf(a.name) > cityOrder.indexOf(b.name)) {
+            return 1;
+        }
+        else {return 0;}
+    };
 
     function extractUnitData(hgJson) {
 
