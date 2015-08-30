@@ -37,7 +37,12 @@
 
     <aside class="buttons">
       <div class="cities"></div>
+      <div class="types"></div>
     </aside>
+
+    <div class="unit-wrapper">
+      <div class="units"></div>
+    </div>
 
     <!-- City template -->
     <script id="city-button" type="text/x-handlebars-template">
@@ -47,9 +52,13 @@
       </button>
     </script>
 
-    <div class="unit-wrapper">
-      <div class="units"></div>
-    </div>
+    <!-- Type template -->
+    <script id="type-button" type="text/x-handlebars-template">
+      <button class="button-primary type"
+              data-types="{{name}}">
+              {{ name }}
+      </button>
+    </script>
         
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">

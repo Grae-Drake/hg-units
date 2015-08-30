@@ -62,18 +62,18 @@ header {
     margin: 0;
 }
 
-.city {
-    min-width: 168px
+button {
+    min-width: 172px
 }
 
 .unit-wrapper {
     text-align: center;
+    min-height: 500px;
+    margin: 0 0 0 184px;
 }
 
 .units {
     display: inline-block;
-    min-height: 500px;
-    margin: 0 0 0 184px;
     text-align: left;
 }
 
@@ -180,42 +180,105 @@ footer {
 }
 
 /* Action colors */
-.wood, .growth {
+.wood,
+.growth {
     background-color: #7ab42b;
 }
 
-.burnout, .dormant, .frail, .renegade, .knockout, .reaper, .vanish {
+.burnout,
+.dormant,
+.frail,
+.renegade,
+.knockout,
+.reaper,
+.vanish {
     background-color: #333333;
 }
 
-.arrow, .wound, .fireball, .flare, .drain, .undercut, .snipe {
+.arrow,
+.wound,
+.fireball,
+.flare,
+.drain,
+.undercut,
+.snipe {
     background-color: #bbbbbb;
 }
 
-.defense, .protect, .toxic, .golemShield, .guardian, .tribalHex, .fortify {
+.defense,
+.protect,
+.toxic,
+.golemShield,
+.guardian,
+.tribalHex,
+.fortify {
     background-color: #79a0fc;
 }
 
-.recruit, .transform, .matriarch, .reanimate {
+.recruit,
+.transform,
+.matriarch,
+.reanimate {
     background-color: #bf8b5b;
 }
 
-.attack, .honor, .rampage, .bolt, .deathBolt, .atkSquire, .revenge, .wolfPack, .dogPack, .foxPack, .spearhead, .flourish, .frenzy, .gamble, .liege {
+.attack,
+.honor,
+.rampage,
+.bolt,
+.deathBolt,
+.atkSquire,
+.revenge,
+.wolfPack,
+.dogPack,
+.foxPack,
+.spearhead,
+.flourish,
+.frenzy,
+.gamble,
+.liege {
     background-color: #ba5c3d;
 }
 
-.gold, .greed, .charity, .tribalDues, .tax {
+.gold,
+.greed,
+.charity,
+.tribalDues,
+.tax {
     background-color: #e6c039;
 }
 
-.crystal, .windfall {
+.crystal,
+.windfall {
     background-color: #3497e3;
 }
 
-.healing, .paladin {
+.healing,
+.paladin {
     background-color: #e6c039;
 }
 
-.farmerKing, .knightKing, .skelKing, .dragonQueen, .fighterKing, .barbKing, .barbBerserk, .duoRaeus, .duoRainer, .duoTydus, .steal, .zealot, .totemfarm, .spiritLord, .golemSurge, .taskmaster, .siege, .duoRandal, .bloodRage, .stoneWall, .stoneRam, .elemental {
+.farmerKing,
+.knightKing,
+.skelKing,
+.dragonQueen,
+.fighterKing,
+.barbKing,
+.barbBerserk,
+.duoRaeus,
+.duoRainer,
+.duoTydus,
+.steal,
+.zealot,
+.totemfarm,
+.spiritLord,
+.golemSurge,
+.taskmaster,
+.siege,
+.duoRandal,
+.bloodRage,
+.stoneWall,
+.stoneRam,
+.elemental {
     background-color: #b528f0;
 }

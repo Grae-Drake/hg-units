@@ -15,6 +15,7 @@ $(document).ready(function() {
 
             console.log("cityLibrary:", cityLibrary);
             populateCities(cityLibrary);
+            populateTypes();
             populateUnits(unitLibrary);
 
         });
@@ -205,12 +206,22 @@ $(document).ready(function() {
         });
     }
 
+    function filterTypes(unitLibrary, activeTypes) {
+        return unitLibrary.filter(function(unit) {
+            unit.types.filter(function(type) {
+                return activeTypes.indexOf(type) != -1;
+            });
+        });
+    }
+
     // Templating.
 
     var unitTemplateScript = $("#unit-card").html();
     var unitTemplate = Handlebars.compile(unitTemplateScript);
     var cityTemplateScript = $("#city-button").html();
     var cityTemplate = Handlebars.compile(cityTemplateScript);
+    var typeTemplateScript = $('#type-button').html();
+    var typeTemplate = Handlebars.compile(typeTemplateScript);
     Handlebars.registerHelper('toUpperCase', function(str) {
         return str.toUpperCase();
     });
@@ -236,12 +247,43 @@ $(document).ready(function() {
         }
         $('.city').on('click', function() {
             $(this).toggleClass('button-primary');
-            activeCities = getActiveCities();
+            var activeCities = getActiveCities();
             $('.units').empty();
             populateUnits(filterUnits(unitLibrary, activeCities));
         });
     }
     
+    function populateTypes() {
+        console.log("populating types");
+        var types = [{'name': 'farmer'},
+                     {'name': 'knight'},
+                     {'name': 'skeleton'},
+                     {'name': 'dragon'},
+                     {'name': 'fighter'},
+                     {'name': 'barbarian'},
+                     {'name': 'zealot / wizard'},
+                     {'name': 'totem'},
+                     {'name': 'spirit'},
+                     {'name': 'golem'},
+                     {'name': 'harvester'},
+                     {'name': 'mountain'},
+                     {'name': 'troll'},
+                     {'name': 'wolf / hunter'},
+                     {'name': 'dog / soldier'},
+                     {'name': 'fox / thief'}];
+        for (var i = 0 ; i < types.length ; i++) {
+            var type = types[i];
+            console.log("populating type: ", typeTemplate(type));
+            $('.types').append(typeTemplate(type));
+        }
+
+        $('.type').on('click', function() {
+            $(this).toggleClass('button-primary');
+            var activeTypes = getActiveTypes();
+            $('.units').empty();
+            populateUnits(filterTypes(unitLibrary, activeTypes));
+        });
+    }
 
 
     // Go time.
