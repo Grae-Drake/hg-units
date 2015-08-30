@@ -26,12 +26,14 @@ body:after {
 
 header {
     color: #fff;
-    background-color: #111;
+    background-color: #c8532f;
+
 }
 
 .navigation {
     list-style: none;
     margin:0;
+    opacity: .8;
 }
 
 .navigation a {
@@ -40,13 +42,15 @@ header {
 }
 
 .navigation li {
-    color: #33C3F0;
+    color: #FFF;
+    font-size: 1.2em;
+    text-align: center;
     margin: 0;
     padding: 8px 0 8px 0;
 }
 
 .navigation li:hover {
-    color: #1EAEDB;
+    text-decoration: underline;
 }
 
 .hero h2 {
@@ -54,12 +58,31 @@ header {
     text-shadow: 0 2px 4px #1e2835;
 }
 
+#search {
+    width: 168px;
+}
+
 .buttons {
-    width: 180px;
+    width: 190px;
     vertical-align: top;
     display: inline-block;
     position: absolute;
     margin: 0;
+    padding: 0 10px 0 10px;
+    box-sizing: border-box;
+    border: 2px solid #c8532f;
+    border-radius: 8px;
+
+
+}
+
+.buttons p {
+    color: #FFF;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    text-shadow: 0 2px 4px #1e2835;
+
 }
 
 .city {
@@ -72,8 +95,8 @@ header {
 
 .units {
     display: inline-block;
-    min-height: 500px;
-    margin: 0 0 0 184px;
+    min-height: 646px;
+    margin: 0 0 0 200px;
     text-align: left;
 }
 
@@ -82,7 +105,7 @@ header {
     margin: 0 4px 2px 4px;
     min-height: 210px;
     border-radius: 8px;
-    box-shadow: 0 0 0 1px black;
+    box-shadow: 0 0 0 1px #222;
     display: inline-block;
     background: #D1D1BA;
 }
@@ -149,6 +172,7 @@ header {
     padding: 0 0 0 16px;
     font-size: 0.9em;
     font-weight: 800;
+    white-space: nowrap;
     background-color: black;
     color: white;
 }
@@ -171,7 +195,8 @@ header {
 
 footer {
     color: #fff;
-    background-color: #111;
+    background-color: rgba(17, 17, 17, .85);
+    opacity: .8;
     text-align: center;
     margin: 0;
     padding: 8px 32px 8px 32px;

@@ -239,9 +239,25 @@ $(document).ready(function() {
             activeCities = getActiveCities();
             $('.units').empty();
             populateUnits(filterUnits(unitLibrary, activeCities));
+            searchFilter();
         });
     }
     
+  
+    $("#search").on("keyup", searchFilter);
+
+    function searchFilter() {
+        var value = $("#search").val().toLowerCase();
+
+        $(".units .unit").each(function() {
+            if ($(this).data("searchText").toLowerCase().search(value) > -1) {
+                $(this).show();
+            }
+            else {
+                $(this).hide();
+            }
+        });
+    }
 
 
     // Go time.

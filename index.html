@@ -36,7 +36,13 @@
     </div>
 
     <aside class="buttons">
+
+      <p>Search</p>
+      <input id="search" type="text"/>
+
+      <p href="#">Filter by city</p>
       <div class="cities"></div>
+
     </aside>
 
     <!-- City template -->
@@ -53,7 +59,11 @@
         
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">
-      <div class="unit">
+      <div class="unit" data-search-text="{{name}} 
+                                          {{#each types }}{{this}}{{/each}} 
+                                          {{rarity}} 
+                                          {{#each homeActions}}{{this.type}}{{/each}} 
+                                          {{#each battleActions}}{{this.type}}{{/each}}">
         <div class="unit-top row">
           <div class="one-third column unit-sprite">
              <img src="images/outline.png">
