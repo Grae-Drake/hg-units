@@ -60,7 +60,16 @@
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">
       <div class="unit" data-search-text="{{name}} 
-                                          {{#each types }}{{this}}{{/each}} 
+                                          {{#each types }}{{this}}{{/each}}
+                                          {{#if cost.gold }}
+                                            {{cost.gold }} Gold
+                                          {{/if}}
+                                          {{#if cost.crystal}}
+                                            {{ cost.crystal }} Crystal
+                                          {{/if}}
+                                          {{#if cost.wood}}
+                                            {{ cost.wood }} Wood
+                                          {{/if}} 
                                           {{rarity}} 
                                           {{#each homeActions}}{{this.type}}{{/each}} 
                                           {{#each battleActions}}{{this.type}}{{/each}}">
