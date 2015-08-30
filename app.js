@@ -13,7 +13,6 @@ $(document).ready(function() {
             unitLibrary = extractUnitData(parseHighgroundsXml(hgData));
             cityLibrary = extractCityData(parseHighgroundsXml(hgData));
 
-            console.log("cityLibrary:", cityLibrary);
             populateCities(cityLibrary);
             populateTypes();
             populateUnits(unitLibrary);
@@ -35,7 +34,6 @@ $(document).ready(function() {
         // Build an array of objects from the JSON data holding all cities.
         var cities = [];
         rawCities = hgJson.data.CITYLIST.CITY;
-        console.log(rawCities);
 
         // Omit the first "dummy" unit.
         for (var i = 1 ; i < rawCities.length ; i++) {
@@ -176,7 +174,7 @@ $(document).ready(function() {
     }
 
     function getActiveCities() {
-        activeButtons = $('.button-primary');
+        var activeButtons = $('.button-primary');
         return cityLibrary.filter(function(city) {
             for (var i = 0 ; i < activeButtons.length ; i++) {
                 if ($(activeButtons[i]).data("cityId") === city.id) {
@@ -184,6 +182,15 @@ $(document).ready(function() {
                 }
             }
         });
+    }
+
+    function getActiveTypes() {
+        var activeButtons = $('.button-primary.type');
+        var activeTypes = [];
+        for (var i = 0 ; i < activeButtons.length ; i++) {
+            activeTypes = activeTypes.concat(($(activeButtons[i]).data('types').split(" / ")));
+        }
+        return activeTypes;
     }
 
     function filterUnits(unitLibrary, activeCities) {
@@ -208,7 +215,7 @@ $(document).ready(function() {
 
     function filterTypes(unitLibrary, activeTypes) {
         return unitLibrary.filter(function(unit) {
-            unit.types.filter(function(type) {
+            return unit.types.filter(function(type) {
                 return activeTypes.indexOf(type) != -1;
             });
         });
@@ -254,26 +261,24 @@ $(document).ready(function() {
     }
     
     function populateTypes() {
-        console.log("populating types");
-        var types = [{'name': 'farmer'},
-                     {'name': 'knight'},
-                     {'name': 'skeleton'},
-                     {'name': 'dragon'},
-                     {'name': 'fighter'},
-                     {'name': 'barbarian'},
-                     {'name': 'zealot / wizard'},
-                     {'name': 'totem'},
-                     {'name': 'spirit'},
-                     {'name': 'golem'},
-                     {'name': 'harvester'},
-                     {'name': 'mountain'},
-                     {'name': 'troll'},
-                     {'name': 'wolf / hunter'},
-                     {'name': 'dog / soldier'},
-                     {'name': 'fox / thief'}];
+        var types = [{'name': 'Farmer'},
+                     {'name': 'Knight'},
+                     {'name': 'Skeleton'},
+                     {'name': 'Dragon'},
+                     {'name': 'Fighter'},
+                     {'name': 'Barbarian'},
+                     {'name': 'Zealot / Wizard'},
+                     {'name': 'Totem'},
+                     {'name': 'Spirit'},
+                     {'name': 'Golem'},
+                     {'name': 'Harvester'},
+                     {'name': 'Mountain'},
+                     {'name': 'Troll'},
+                     {'name': 'Wolf / Hunter'},
+                     {'name': 'Dog / Soldier'},
+                     {'name': 'Fox / Thief'}];
         for (var i = 0 ; i < types.length ; i++) {
             var type = types[i];
-            console.log("populating type: ", typeTemplate(type));
             $('.types').append(typeTemplate(type));
         }
 
@@ -281,7 +286,8 @@ $(document).ready(function() {
             $(this).toggleClass('button-primary');
             var activeTypes = getActiveTypes();
             $('.units').empty();
-            populateUnits(filterTypes(unitLibrary, activeTypes));
+            console.log("filtered:", filterTypes(unitLibrary, activeTypes));
+            populateTypes(filterTypes(unitLibrary, activeTypes));
         });
     }
 
