@@ -13,7 +13,6 @@ $(document).ready(function() {
             unitLibrary = extractUnitData(parseHighgroundsXml(hgData));
             cityLibrary = extractCityData(parseHighgroundsXml(hgData));
 
-            console.log("cityLibrary:", cityLibrary);
             populateCities(cityLibrary);
             populateUnits(unitLibrary);
 
@@ -34,7 +33,6 @@ $(document).ready(function() {
         // Build an array of objects from the JSON data holding all cities.
         var cities = [];
         rawCities = hgJson.data.CITYLIST.CITY;
-        console.log(rawCities);
 
         // Omit the first "dummy" unit.
         for (var i = 1 ; i < rawCities.length ; i++) {
@@ -129,6 +127,7 @@ $(document).ready(function() {
             var homeActions = [];
             var battleActions = [];
             var types = [];
+            var searchText = "";
 
             // Populate homeActions and battleActions arrays.
             for (var j = 0 ; j < rawCard.ACTION.length ; j ++) {
@@ -147,6 +146,7 @@ $(document).ready(function() {
                                  action.type;
 
                 target.push({"type": actionType, "value": actionValue});
+                searchText += "!action " + actionValue + " " + actionType + " ";
             }
 
             // Populate types array. Raw types can be an array or an object.
@@ -158,7 +158,7 @@ $(document).ready(function() {
                 types.push(rawCard.TYPE["#text"]);
             }
             
-            cards.push({
+            var card = {
                 "name": attributes.name,
                 "cost": {"gold": parseInt(attributes.g, 10),
                          "crystal": parseInt(attributes.c, 10),
@@ -169,7 +169,24 @@ $(document).ready(function() {
                 "homeActions": homeActions,
                 "battleActions": battleActions,
                 "types": types
-            });
+            };
+
+            searchText += ["!name", card.name,
+                          card.types.join(" "),
+                          card.cost.gold ? ["!cost",
+                                               card.cost.gold,
+                                               "gold"].join(" ") : "",
+                          card.cost.crystal ? ["!cost",
+                                               card.cost.crystal,
+                                               "crystal"].join(" ") : "",
+                          card.cost.wood ? ["!cost",
+                                               card.cost.wood,
+                                               "wood"].join(" ") : "",
+                          "!rarity", card.rarity,
+                          "!edition", card.edition,
+                          ].join(" ");
+            card.searchText = searchText;
+            cards.push(card);
         }
         return cards;
     }
@@ -247,18 +264,29 @@ $(document).ready(function() {
     $("#search").on("keyup", searchFilter);
 
     function searchFilter() {
-        var value = $("#search").val().toLowerCase();
+        var values = $("#search").val().toLowerCase().split(",");
+        console.log(values);
 
         $(".units .unit").each(function() {
-            if ($(this).data("searchText").toLowerCase().search(value) > -1) {
-                $(this).show();
+            var matches = [];
+            var searchText = $(this).data("searchText").toLowerCase();
+            
+            for (var i = 0 ; i < values.length ; i++) {
+                matches.push(searchText.search(values[i]) > -1);
+            }
+
+            if(matches.indexOf(false) > -1) {
+                $(this).hide();
             }
             else {
-                $(this).hide();
+                $(this).show();
             }
         });
     }
 
+    $(".buttons i").on("click", function() {
+        $(".search-instructions").toggle();
+    });
 
     // Go time.
     getUnits();

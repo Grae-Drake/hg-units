@@ -31,6 +31,7 @@ header {
 }
 
 .navigation {
+    font-size: 1.2em;
     list-style: none;
     margin:0;
     opacity: .8;
@@ -43,7 +44,6 @@ header {
 
 .navigation li {
     color: #FFF;
-    font-size: 1.2em;
     text-align: center;
     margin: 0;
     padding: 8px 0 8px 0;
@@ -58,12 +58,56 @@ header {
     text-shadow: 0 2px 4px #1e2835;
 }
 
+.search-instructions {
+    display: none;
+    position: absolute;
+    left: 203px;
+    top: 71px;
+    width: 268px;
+    background-color: #c8532f;
+    color: #FFF;
+    border-radius: 8px;
+    padding: 12px 12px 0 12px;
+    box-shadow: 0 0 1px 1px #222;
+    font-size: 1.2em;
+}
+
+.search-instructions span {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #9F2A06;
+    padding: 0 8px 0 8px;
+}
+
+.search-instructions:after, .search-instructions:before {
+    right: 100%;
+    top: 32px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.search-instructions:after {
+    border-color: rgba(200, 83, 47, 0);
+    border-right-color: #c8532f;
+    border-width: 10px;
+    margin-top: -10px;
+}
+.search-instructions:before {
+    border-color: rgba(34, 34, 34, 0);
+    border-right-color: #222;
+    border-width: 11px;
+    margin-top: -11px;
+}
+
 #search {
     width: 168px;
 }
 
 .buttons {
-    width: 190px;
+    width: 192px;
     vertical-align: top;
     display: inline-block;
     position: absolute;
@@ -76,14 +120,30 @@ header {
 
 }
 
-.buttons p {
+.search-text {
     color: #FFF;
     font-size: 1.5em;
-    margin-bottom: 5px;
-    margin-top: 10px;
+    padding: 10px 0 5px 0;
+}
+.buttons p {
     text-shadow: 0 2px 4px #1e2835;
+    display: inline-block;
+    margin: 0;
 
 }
+
+.buttons i {
+    font-size: 1.0em;
+    color: #FFF;
+    margin-left: 62px;
+    padding: 6px 0 6px 6px;
+}
+
+.buttons i:hover {
+    color: #c8532f;
+}
+
+
 
 .city {
     min-width: 168px
@@ -205,42 +265,107 @@ footer {
 }
 
 /* Action colors */
-.wood, .growth {
+.wood,
+.growth {
     background-color: #7ab42b;
 }
 
-.burnout, .dormant, .frail, .renegade, .knockout, .reaper, .vanish {
+.burnout,
+.dormant,
+.frail,
+.renegade,
+.knockout,
+.reaper,
+.vanish {
     background-color: #333333;
 }
 
-.arrow, .wound, .fireball, .flare, .drain, .undercut, .snipe {
+.arrow,
+.wound,
+.fireball,
+.flare,
+.drain,
+.undercut,
+.snipe {
     background-color: #bbbbbb;
 }
 
-.defense, .protect, .toxic, .golemShield, .guardian, .tribalHex, .fortify {
+.defense,
+.protect,
+.toxic,
+.golemShield,
+.guardian,
+.tribalHex,
+.fortify {
     background-color: #79a0fc;
 }
 
-.recruit, .transform, .matriarch, .reanimate {
+.recruit,
+.transform,
+.matriarch,
+.reanimate {
     background-color: #bf8b5b;
 }
 
-.attack, .honor, .rampage, .bolt, .deathBolt, .atkSquire, .revenge, .wolfPack, .dogPack, .foxPack, .spearhead, .flourish, .frenzy, .gamble, .liege {
+.attack,
+.honor,
+.rampage,
+.bolt,
+.deathBolt,
+.atkSquire,
+.revenge,
+.wolfPack,
+.dogPack,
+.foxPack,
+.spearhead,
+.flourish,
+.frenzy,
+.gamble,
+.liege {
     background-color: #ba5c3d;
 }
 
-.gold, .greed, .charity, .tribalDues, .tax {
+.gold,
+.greed,
+.charity,
+.tribalDues,
+.tax {
     background-color: #e6c039;
 }
 
-.crystal, .windfall {
+.crystal,
+.windfall {
     background-color: #3497e3;
 }
 
-.healing, .paladin {
+.healing,
+.paladin {
     background-color: #e6c039;
 }
 
-.farmerKing, .knightKing, .skelKing, .dragonQueen, .fighterKing, .barbKing, .barbBerserk, .duoRaeus, .duoRainer, .duoTydus, .steal, .zealot, .totemfarm, .spiritLord, .golemSurge, .taskmaster, .siege, .duoRandal, .bloodRage, .stoneWall, .stoneRam, .elemental {
+.farmerKing,
+.knightKing,
+.skelKing,
+.dragonQueen,
+.fighterKing,
+.barbKing,
+.barbBerserk,
+.duoRaeus,
+.duoRainer,
+.duoTydus,
+.steal,
+.zealot,
+.totemfarm,
+.spiritLord,
+.golemSurge,
+.taskmaster,
+.siege,
+.duoRandal,
+.bloodRage,
+.stoneWall,
+.stoneRam,
+.elemental,
+.wispKing,
+.raidKing {
     background-color: #b528f0;
 }

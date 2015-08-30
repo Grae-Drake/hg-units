@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -36,14 +37,24 @@
     </div>
 
     <aside class="buttons">
-
-      <p>Search</p>
+      <div class="search-text">
+        <p>Search</p>
+        <i class="fa fa-question-circle"></i>
+      </div>
       <input id="search" type="text"/>
-
-      <p href="#">Filter by city</p>
+      <div class="search-text">
+        <p href="#">Filter by city</p>
+      </div>
       <div class="cities"></div>
-
     </aside>
+
+    <section class="search-instructions">
+      <p>Search by unit name, type, cost, rarity, or ability.</p>
+
+      <p>Use a comma to separate multiple search criteria.  For example, try searching for <span>2 gold, knight</span>, or <span>crystal, thief</span>.</p>
+
+      <p>You can also limit your search to certain fields by starting your query with <span>!name</span>, <span>!type</span>, <span>!cost</span>, <span>!rarity</span>, or <span>!action</span>.  For example, try searching for <span>!cost 3 gold</span> or <span>!rarity rare</span>.</p>
+    </section>
 
     <!-- City template -->
     <script id="city-button" type="text/x-handlebars-template">
@@ -59,20 +70,7 @@
         
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">
-      <div class="unit" data-search-text="{{name}} 
-                                          {{#each types }}{{this}}{{/each}}
-                                          {{#if cost.gold }}
-                                            {{cost.gold }} Gold
-                                          {{/if}}
-                                          {{#if cost.crystal}}
-                                            {{ cost.crystal }} Crystal
-                                          {{/if}}
-                                          {{#if cost.wood}}
-                                            {{ cost.wood }} Wood
-                                          {{/if}} 
-                                          {{rarity}} 
-                                          {{#each homeActions}}{{this.type}}{{/each}} 
-                                          {{#each battleActions}}{{this.type}}{{/each}}">
+      <div class="unit" data-search-text="{{searchText}}">
         <div class="unit-top row">
           <div class="one-third column unit-sprite">
              <img src="images/outline.png">
