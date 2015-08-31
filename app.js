@@ -93,14 +93,18 @@ $(document).ready(function() {
                          "Crystal Camp", "Outfitter", "The Den", "The Grotto",
                          "Forest Village", "Shadow Pylon"];
 
-        var cityIndex = {};
-        for(var i = 0; i < cityOrder.length; i++){
-            cityIndex[cityOrder[i]] = i;
+        for(var i = 0; i < cities.length; i++){
+            cities[i]._index = cityOrder.indexOf(cities[i]);
         }
 
         cities.sort(function compareCities(a, b){
-            return cityIndex[a] - cityIndex[b];
+            return a._index - b._index;
         });
+        
+        //for(var i = 0; i < cities.length; i++){
+        //    delete cities[i]._index;
+        //}
+
 
         return cities;
     }
