@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>HG Units</title>
-  <meta name="description" content="Collection of units from Highgrounds">
-  <meta name="author" content="Grae Drake">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>HG Units</title>
+    <meta name="description" content="Collection of units from Highgrounds">
+    <meta name="author" content="Grae Drake">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-  <link rel="icon" type="image/png" href="images/favicon.png">
-</head>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+  </head>
 
-<body>
-  <header>
-    <div class="container">
-      <ul class="navigation row">
-        <a class="three columns" href="http://www.highgroundsgame.com">
-          <li>Play Highgrounds</li>
-        </a>
-      </ul>
-    </div>
-  </header>
-  <div class="container">
+  <body>
 
-
-    <div class="row hero">
-      <h2 style="margin-top: 10%">Highgrounds Units</h2>
-    </div>
-
-    <aside class="buttons">
-      <div class="search-text">
-        <p>Search</p>
-        <i class="fa fa-question-circle"></i>
+    <header>
+      <div class="container">
+        <ul class="navigation row">
+          <a class="three columns" href="http://www.highgroundsgame.com">
+            <li>Play Highgrounds</li>
+          </a>
+        </ul>
       </div>
-      <input id="search" type="text"/>
-      <div class="search-text">
-        <p href="#">Filter by city</p>
+    </header>
+
+    <main class="container">
+
+
+      <div class="row hero">
+        <h2 style="margin-top: 10%">Highgrounds Units</h2>
       </div>
-      <div class="cities"></div>
-    </aside>
 
-    <section class="search-instructions">
-      <p>Search by unit name, type, cost, rarity, or ability.</p>
+      <aside class="buttons">
+        <div class="search-text">
+          <p>Search</p>
+          <i class="fa fa-question-circle"></i>
+        </div>
+        <input id="search" type="text"/>
+        <div class="search-text">
+          <p href="#">Filter by city</p>
+        </div>
+        <div class="cities"></div>
+      </aside>
 
-      <p>Use a comma to separate multiple search criteria.  For example, try searching for <span>2 gold, knight</span>, or <span>crystal, thief</span>.</p>
+      <section class="search-instructions">
+        <p>Search by unit name, type, cost, rarity, or ability.</p>
 
-      <p>You can also limit your search to certain fields by starting your query with <span>!name</span>, <span>!type</span>, <span>!cost</span>, <span>!rarity</span>, or <span>!action</span>.  For example, try searching for <span>!cost 3 gold</span> or <span>!rarity rare</span>.</p>
-    </section>
+        <p>Use a comma to separate multiple search criteria.  For example, try searching for <span>2 gold, knight</span>, or <span>crystal, thief</span>.</p>
+
+        <p>You can also limit your search to certain fields by starting your query with <span>!name</span>, <span>!type</span>, <span>!cost</span>, <span>!rarity</span>, or <span>!action</span>.  For example, try searching for <span>!cost 3 gold</span> or <span>!rarity rare</span>.</p>
+      </section>
+
+      <div class="unit-wrapper">
+        <div class="units"></div>
+      </div>
+
+    </main>
+
+    <footer>All images copyright 2012 Heart Shaped Games, all rights reserved. Now go play <a href="http://www.highgroundsgame.com">Highgrounds</a>.</footer>
 
     <!-- City template -->
     <script id="city-button" type="text/x-handlebars-template">
@@ -63,10 +72,6 @@
               {{ name }}
       </button>
     </script>
-
-    <div class="unit-wrapper">
-      <div class="units"></div>
-    </div>
         
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">
@@ -113,12 +118,9 @@
       </div>
     </script>
     <!-- End unit template -->
-      
-    </div>
-  </div>
-  <footer>All images copyright 2012 Heart Shaped Games, all rights reserved. Now go play <a href="http://www.highgroundsgame.com">Highgrounds</a>.</footer>
-  <script type="text/javascript" src="xml-to-json.js"></script>
-  <script type="text/javascript" src="app.js"></script>
-</body>
+
+    <script type="text/javascript" src="xml-to-json.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
 
 </html>
