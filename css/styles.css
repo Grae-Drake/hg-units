@@ -153,17 +153,43 @@ header {
     text-align: center;
     margin: 0 0 0 200px;
     min-height: 652px;
+    width: 100%;
 }
 
 .units {
     display: inline-block;
     text-align: left;
     margin: 0 auto;
+    width: 460px;
+}
+
+@media (min-width: 768px) {
+    .units {
+        width: 724px;
+    }
+}
+
+@media (min-width: 1030px) {
+    .units {
+        width: 988px;
+    }
+}
+
+@media (min-width: 1294px) {
+    .units {
+        width: 1252px;
+    }
+}
+
+@media (min-width: 1558px) {
+    .units {
+        width: 1516px;
+    }
 }
 
 .unit {
     width: 260px;
-    margin: 0 4px 2px 4px;
+    margin: 0 4px 8px 4px;
     min-height: 210px;
     border-radius: 8px;
     box-shadow: 0 0 0 1px #222;
@@ -196,12 +222,9 @@ header {
 }
 
 .unit-top {
-
+    height: 104px;
 }
 
-.unit-bottom {
-
-}
 
 .unit-sprite {
     float: left;
@@ -211,6 +234,7 @@ header {
 .unit-top-text {
     display: inline-block;
     width: 159px;
+    margin: 0;
 
 }
 
@@ -223,12 +247,14 @@ header {
 .unit-types {
     font-size: .8em;
     font-weight: 800;
-    margin: 0px;
+    margin: 0;
 }
 
 .unit-cost {
     font-size: .8em;
+    height: 19px;
     margin: 0 0 0 16px;
+
 }
 
 .unit-rarity {
@@ -238,14 +264,17 @@ header {
 
 .unit-bottom {
     padding: 0 0 10px 0;
+    clear: both;
 }
 
 .unit-back-row {
-    
+    float: left;
+    width: 124px    
 }
 
 .unit-front-row {
-
+    float: right;
+    width: 124px;   
 }
 
 .unit-row-title {
