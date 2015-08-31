@@ -237,12 +237,15 @@ $(document).ready(function() {
     });
     
     function populateUnits(units) {
-
+        var unitNodes = [];
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
             unit["cache"] = unit["cache"] || unitTemplate(unit);
-             $(".units").append(unit["cache"]);
+            unitNodes.push(unit["cache"]);
         }
+        
+        $(".units").append(unitNodes);
+        
         $(".unit-sprite img").on("error abort", function() {
             this.src="images/outline.png";
         });
