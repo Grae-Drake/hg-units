@@ -94,12 +94,12 @@ $(document).ready(function() {
                          "Forest Village", "Shadow Pylon"];
 
         var cityIndex = {};
-        for(var i = 0; i < cityOrder.length; i++){
-            cityIndex[cityOrder[i]] = i;
+        for(var l = 0; l < cityOrder.length; l++){
+            cityIndex[cityOrder[l]] = l;
         }
 
-        cities.sort(function compareCities(a, b){
-            return cityIndex[a] - cityIndex[b];
+        cities.sort(function(a, b) {
+            return cityIndex[a.name] - cityIndex[b.name];
         });
 
         return cities;
