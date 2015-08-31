@@ -255,7 +255,7 @@ $(document).ready(function() {
 
         for (var j = 0 ; j < cities.length ; j++) {
             var city = cities[j];
-            city["cache"] = city["cache"] || cityTemplate(city);
+            city["cache"] = city["cache"] || $(cityTemplate(city));
             $(".cities").append(city["cache"]);
         }
         $('.city').on('click', function() {
