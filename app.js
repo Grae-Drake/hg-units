@@ -89,23 +89,22 @@ $(document).ready(function() {
         }
 
         // sort cities
-
-        cities.sort(compareCities);
-        return cities;
-    }
-
-    function compareCities(a,b) {
         var cityOrder = ["Titan Ridge", "Dwila", "Sacred Woods", "The Helm",
                          "Crystal Camp", "Outfitter", "The Den", "The Grotto",
                          "Forest Village", "Shadow Pylon"];
-        if (cityOrder.indexOf(a.name) < cityOrder.indexOf(b.name)) {
-            return -1;
+
+        var cityIndex = {};
+        for(var i = 0; i < cityOrder.length; i++){
+            cityIndex[cityOrder[i]] = i;
         }
-        else if (cityOrder.indexOf(a.name) > cityOrder.indexOf(b.name)) {
-            return 1;
-        }
-        else {return 0;}
+
+        cities.sort(function compareCities(a, b){
+            return cityIndex[a] - cityIndex[b];
+        });
+
+        return cities;
     }
+
 
     function extractUnitData(hgJson) {
 
