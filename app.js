@@ -27,8 +27,12 @@ $(document).ready(function() {
         $(".search-instructions").toggle();
     });
 
-    $(".units ").on("error abort", ".unit-sprite img", function() {
-        this.src="images/outline.png";
+    $(".units").on("click", ".unit", function() {
+        console.log($(this).data("compendiumId"));
+        if ($(this).data("compendiumId") != "undefined") {
+            window.open('http://www.heartshapedgames.com/forums/showthread.php?tid=826&pid=' +
+                        $(this).data('compendiumId'),'_newtab');
+        }
     });
 
     $("#search").on("keyup", searchFilter);
@@ -194,7 +198,8 @@ function extractUnitData(hgJson) {
             "rarity": rarities[parseInt(attributes.rarity, 10)],
             "homeActions": homeActions,
             "battleActions": battleActions,
-            "types": types
+            "types": types,
+            "compendiumId": unitCompendium[attributes.name] ? unitCompendium[attributes.name] : undefined
         };
 
         searchText += ["!name", card.name,
@@ -264,6 +269,11 @@ function populateUnits(units, unitTemplate) {
     }
     
     $(".units").append(unitNodes);
+
+    $(".unit-sprite img").on("error abort", function() {
+        $(this).addClass("non-image");
+        this.src="images/outline.png";
+    });
 }
 
     

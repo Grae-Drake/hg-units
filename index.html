@@ -75,7 +75,9 @@
         
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">
-      <div class="unit" data-search-text="{{searchText}}">
+      <div class="unit {{#unless compendiumId}}non-compendium{{/unless}}"
+           data-search-text="{{searchText}}"
+           data-compendium-id="{{#if compendiumId}}{{compendiumId}}{{else}}undefined{{/if}}">
         <div class="unit-top row">
           <div class="one-third column unit-sprite">
              <img src="images/outline.png">
@@ -121,6 +123,7 @@
 
     <script type="text/javascript" src="xml-to-json.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="unitCompendium.js"></script>
   </body>
 
 </html>

@@ -168,6 +168,30 @@ header {
     box-shadow: 0 0 0 1px #222;
     display: inline-block;
     background: #D1D1BA;
+    color: black;
+    position: relative;
+}
+
+.unit:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.unit.non-compendium:hover:after {
+    background: #333;
+    background: rgba(0,0,0,.85);
+    box-shadow: 0 0 0 1px #222;
+    border-radius: 8px;
+    width: 228px;
+    height: 162px;
+    padding: 32px 16px 16px 16px;
+    top: 0;
+    position: absolute;
+    z-index: 98;
+    color: #fff;
+    content: "This card doesn't have a compendium entry yet.";
+    text-align: center;
+    cursor: auto;
 }
 
 .unit-top {
