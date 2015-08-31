@@ -240,7 +240,7 @@ $(document).ready(function() {
         var unitNodes = [];
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
-            unit["cache"] = unit["cache"] || unitTemplate(unit);
+            unit["cache"] = unit["cache"] || $(unitTemplate(unit));
             unitNodes.push(unit["cache"]);
         }
         
