@@ -100,14 +100,19 @@ $(document).ready(function() {
                          "Crystal Camp", "Outfitter", "The Den", "The Grotto",
                          "Forest Village", "Shadow Pylon"];
 
-        var cityIndex = {};
-        for(var l = 0; l < cityOrder.length; l++){
-            cityIndex[cityOrder[l]] = l;
+        for(var l = 0; l < cities.length; l++){
+            cities[l]._index = cityOrder.indexOf(cities[l].name);
         }
 
-        cities.sort(function(a, b) {
-            return cityIndex[a.name] - cityIndex[b.name];
+        cities.sort(function compareCities(a, b){
+            return a._index - b._index;
         });
+        
+        // Optional: Remove temporary property
+        //for(var i = 0; i < cities.length; i++){
+        //    delete cities[i]._index;
+        //}
+
 
         return cities;
     }
@@ -242,12 +247,16 @@ $(document).ready(function() {
     });
     
     function populateUnits(units) {
-
+        var unitNodes = [];
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
             unit["cache"] = unit["cache"] || $(unitTemplate(unit));
-             $(".units").append(unit["cache"]);
+            unitNodes.push(unit["cache"]);
+
         }
+        
+        $(".units").append(unitNodes);
+        
         $(".unit-sprite img").on("error abort", function() {
             this.src="images/outline.png";
         });
@@ -257,7 +266,7 @@ $(document).ready(function() {
 
         for (var j = 0 ; j < cities.length ; j++) {
             var city = cities[j];
-            city["cache"] = city["cache"] || cityTemplate(city);
+            city["cache"] = city["cache"] || $(cityTemplate(city));
             $(".cities").append(city["cache"]);
         }
     }
