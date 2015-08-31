@@ -245,7 +245,7 @@ $(document).ready(function() {
 
         for (var i = 0 ; i < units.length ; i++) {
             var unit = units[i];
-            unit["cache"] = unit["cache"] || unitTemplate(unit);
+            unit["cache"] = unit["cache"] || $(unitTemplate(unit));
              $(".units").append(unit["cache"]);
         }
         $(".unit-sprite img").on("error abort", function() {
