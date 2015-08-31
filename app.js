@@ -3,6 +3,13 @@ var unitLibrary = [];
 var cityLibrary = [];
 $(document).ready(function() {
 
+    $('.cities').on('click', ".city", function() {
+        $(this).toggleClass('button-primary');
+        $('.units').empty();
+        populateUnits(filterUnits(unitLibrary, getActiveCities()));
+        searchFilter();
+    });
+
     // Get the data from Highgrounds git repo and populate results.
     function getUnits() {
 
@@ -192,6 +199,9 @@ $(document).ready(function() {
 
     function getActiveCities() {
         activeButtons = $('.button-primary');
+        if (activeButtons.length === 0) {
+            return cityLibrary;
+        }
         return cityLibrary.filter(function(city) {
             for (var i = 0 ; i < activeButtons.length ; i++) {
                 if ($(activeButtons[i]).data("cityId") === city.id) {
@@ -250,13 +260,6 @@ $(document).ready(function() {
             city["cache"] = city["cache"] || cityTemplate(city);
             $(".cities").append(city["cache"]);
         }
-        $('.city').on('click', function() {
-            $(this).toggleClass('button-primary');
-            activeCities = getActiveCities();
-            $('.units').empty();
-            populateUnits(filterUnits(unitLibrary, activeCities));
-            searchFilter();
-        });
     }
     
   
@@ -264,7 +267,6 @@ $(document).ready(function() {
 
     function searchFilter() {
         var values = $("#search").val().toLowerCase().split(",");
-        console.log(values);
 
         $(".units .unit").each(function() {
             var matches = [];
