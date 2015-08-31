@@ -70,6 +70,7 @@ header {
     padding: 12px 12px 0 12px;
     box-shadow: 0 0 1px 1px #222;
     font-size: 1.2em;
+    z-index: 99;
 }
 
 .search-instructions span {
@@ -153,31 +154,31 @@ header {
     text-align: center;
     margin: 0 0 0 200px;
     min-height: 652px;
-    width: 100%;
+    width: calc(100% - 200px);
 }
 
 .units {
     display: inline-block;
     text-align: left;
     margin: 0 auto;
-    width: 460px;
+    width: 268px;
 }
 
 @media (min-width: 768px) {
     .units {
-        width: 724px;
+        width: 536px;
     }
 }
 
 @media (min-width: 1030px) {
     .units {
-        width: 988px;
+        width: 804px;
     }
 }
 
 @media (min-width: 1294px) {
     .units {
-        width: 1252px;
+        width: 1072px;
     }
 }
 
@@ -213,6 +214,7 @@ header {
     height: 162px;
     padding: 32px 16px 16px 16px;
     top: 0;
+    right: 0;
     position: absolute;
     z-index: 98;
     color: #fff;
@@ -224,7 +226,6 @@ header {
 .unit-top {
     height: 104px;
 }
-
 
 .unit-sprite {
     float: left;
