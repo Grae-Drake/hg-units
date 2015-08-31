@@ -12,7 +12,8 @@ body:after {
     linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
     linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
     linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%,
+                    transparent 75%, #242424 75%, #242424);
     background-color: #131313;
     background-size: 20px 20px;
     top: 0;
@@ -150,13 +151,14 @@ header {
 
 .unit-wrapper {
     text-align: center;
+    margin: 0 0 0 200px;
+    min-height: 652px;
 }
 
 .units {
     display: inline-block;
-    min-height: 646px;
-    margin: 0 0 0 200px;
     text-align: left;
+    margin: 0 auto;
 }
 
 .unit {
@@ -202,10 +204,13 @@ header {
 }
 
 .unit-sprite {
+    float: left;
 
 }
 
 .unit-top-text {
+    display: inline-block;
+    width: 159px;
 
 }
 
