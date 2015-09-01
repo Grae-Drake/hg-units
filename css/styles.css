@@ -53,6 +53,12 @@ header {
     text-decoration: underline;
 }
 
+.navigation i {
+    margin-left: 12px;
+    margin-bottom: 2px;
+    font-size: .7em;
+}
+
 .hero h2 {
     color: #fff;
     text-shadow: 0 2px 4px #1e2835;
