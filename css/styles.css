@@ -362,7 +362,8 @@ footer {
 .golemShield,
 .guardian,
 .tribalHex,
-.fortify {
+.fortify,
+.smokeBomb {
     background-color: #79a0fc;
 }
 

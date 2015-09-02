@@ -173,6 +173,7 @@ function extractUnitData(hgJson) {
             // Deal with weird action types like Windfall and "duorainer" typo.
             var actionType = action.type.indexOf("windfall") > -1 ? "windfall" :
                              action.type.indexOf("duorainer") > -1 ? "duoRainer" :
+                             action.type.indexOf("duoRainer#2") > -1 ? "duoRainer" :
                              action.type;
 
             target.push({"type": actionType, "value": actionValue});
