@@ -12,6 +12,7 @@ $(document).ready(function() {
         cityLibrary = extractCityData(parseHighgroundsXml(hgData));
         populateCities(cityLibrary, cityTemplate);
         populateUnits(unitLibrary, unitTemplate);
+        $('#search').focus();
     });
 
 
