@@ -28,14 +28,6 @@ $(document).ready(function() {
         $(".search-instructions").toggle();
     });
 
-    $(".units").on("click", ".unit", function() {
-        console.log($(this).data("compendiumId"));
-        if ($(this).data("compendiumId") != "undefined") {
-            window.open('http://www.heartshapedgames.com/forums/showthread.php?tid=826&pid=' +
-                        $(this).data('compendiumId'),'_newtab');
-        }
-    });
-
     $("#search").on("keyup", searchFilter);
 
 
@@ -180,7 +172,13 @@ function extractUnitData(hgJson) {
                              action.type.indexOf("duoRainer#2") > -1 ? "duoRainer" :
                              action.type;
 
-            target.push({"type": actionType, "value": actionValue});
+            target.push({
+                "type": actionType,
+                "value": actionValue,
+                "description": actionData[actionType.toLowerCase()].description.replace('%0', actionValue),
+                "icon": actionData[actionType.toLowerCase()].icon
+            });
+
             searchText += "!action " + actionValue + " " + actionType + " ";
         }
 

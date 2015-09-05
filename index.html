@@ -78,13 +78,20 @@
         
     <!-- Unit template -->
     <script id="unit-card" type="text/x-handlebars-template">
-      <div class="unit {{#unless compendiumId}}non-compendium{{/unless}}"
-           data-search-text="{{searchText}}"
-           data-compendium-id="{{#if compendiumId}}{{compendiumId}}{{else}}undefined{{/if}}">
+      <div class="unit"
+           data-search-text="{{searchText}}">
         <div class="unit-top">
-          <div class="unit-sprite">
-             <img src="images/{{toLowerCase name}}.png">
-          </div>
+          <a target="_blank" href="
+            {{#if compendiumId}}
+              http://www.heartshapedgames.com/forums/showthread.php?tid=826&pid={{compendiumId}}
+            {{else}}
+              http://www.heartshapedgames.com/forums/showthread.php?tid=126
+            {{/if}}
+          ">         
+            <div class="unit-sprite">
+               <img src="images/outline.png">
+            </div>
+          </a>
           <div class="unit-top-text">
             <p class="unit-name"> {{ toUpperCase name }} </p>
             <p class="unit-types">
@@ -110,13 +117,13 @@
           <div class="unit-back-row">
             <p class="unit-row-title">Back Row</p>
             {{#each homeActions}}
-              <p class="unit-action {{ this.type }} "> {{ this.value }} {{ toUpperCase this.type }} </p>
+              <p class="unit-action {{ this.type }}" title="{{this.description}}"> {{ this.value }} {{ toUpperCase this.type }} </p>
             {{/each}}
           </div>
           <div class="unit-front-row">
             <p class="unit-row-title">Front Row</p>
             {{#each battleActions}}
-              <p class="unit-action {{ this.type }} "> {{ this.value }} {{ toUpperCase this.type }} </p>
+              <p class="unit-action {{ this.type }}" title="{{this.description}}"> {{ this.value }} {{ toUpperCase this.type }} </p>
             {{/each}}
           </div>
         </div>
@@ -127,6 +134,8 @@
     <script type="text/javascript" src="xml-to-json.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="unitCompendium.js"></script>
+    <script type="text/javascript" src="actionData.js"></script>
+
   </body>
 
 </html>
