@@ -194,7 +194,7 @@ header {
 .unit {
     width: 260px;
     margin: 0 4px 8px 4px;
-    min-height: 198px;
+    min-height: 216px;
     border-radius: 8px;
     box-shadow: 0 0 0 1px #222;
     display: inline-block;
