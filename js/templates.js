@@ -17,7 +17,7 @@ Templates.unit = [
                   'http://www.heartshapedgames.com/forums/showthread.php?tid=126',
                 '{{/if}}">',
                 '<div class="unit-sprite">',
-                    '<img src="images/{{name}}.png">',
+                    '<img src="images/{{toLowerCase name}}.png">',
                 '</div>',
             '</a>',
 
