@@ -67,71 +67,9 @@
       <div>All images copyright 2012 Heart Shaped Games, all rights reserved.</div>
       <div>Made with <i class="fa fa-code"></i> by <a href="http://www.grae.io/">Grae</a> and <a href="https://github.com/Grae-Drake/hg-units/graphs/contributors">contributers</a>. Fork me on <a href="www.github.com/Grae-Drake/hg-units">GitHub</a>. Now go play <a href="http://www.highgroundsgame.com" target="_blank">Highgrounds</a>.</div>
     </footer>
-
-    <!-- City template -->
-    <script id="city-button" type="text/x-handlebars-template">
-      <button class="city"
-              data-city-id="{{id}}">
-              {{ name }}
-      </button>
-    </script>
         
-    <!-- Unit template -->
-    <script id="unit-card" type="text/x-handlebars-template">
-      <div class="unit"
-           data-search-text="{{searchText}}">
-        <div class="unit-top">
-          <a target="_blank" href="
-            {{#if compendiumId}}
-              http://www.heartshapedgames.com/forums/showthread.php?tid=826&pid={{compendiumId}}
-            {{else}}
-              http://www.heartshapedgames.com/forums/showthread.php?tid=126
-            {{/if}}
-          ">         
-            <div class="unit-sprite">
-               <img src="images/outline.png">
-            </div>
-          </a>
-          <div class="unit-top-text">
-            <p class="unit-name"> {{ toUpperCase name }} </p>
-            <p class="unit-types">
-              {{#each types }}
-                {{this}}
-              {{/each}}
-            </p>
-            <p class="unit-cost">
-              {{#if cost.gold }}
-                {{ cost.gold }} Gold
-              {{/if}}
-              {{#if cost.crystal}}
-                {{ cost.crystal }} Crystal
-              {{/if}}
-              {{#if cost.wood}}
-                {{ cost.wood }} Wood
-              {{/if}}
-            </p>
-            <p class="unit-rarity"> {{ rarity }} </p>
-          </div>
-        </div>
-        <div class="unit-bottom">
-          <div class="unit-back-row">
-            <p class="unit-row-title">Back Row</p>
-            {{#each homeActions}}
-              <p class="unit-action {{ this.type }}" title="{{this.description}}"> {{ this.value }} {{ toUpperCase this.type }} </p>
-            {{/each}}
-          </div>
-          <div class="unit-front-row">
-            <p class="unit-row-title">Front Row</p>
-            {{#each battleActions}}
-              <p class="unit-action {{ this.type }}" title="{{this.description}}"> {{ this.value }} {{ toUpperCase this.type }} </p>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-    </script>
-    <!-- End unit template -->
-
     <script type="text/javascript" src="js/xml-to-json.js"></script>
+    <script type="text/javascript" src="js/templates.js"></script>    
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/unitCompendium.js"></script>
     <script type="text/javascript" src="js/actionData.js"></script>

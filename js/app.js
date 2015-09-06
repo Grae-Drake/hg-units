@@ -32,10 +32,10 @@ $(document).ready(function() {
 
 
     // Templating.
-    var unitTemplateScript = $("#unit-card").html();
+    var unitTemplateScript = Templates.unit;
     var unitTemplate = Handlebars.compile(unitTemplateScript);
-    var cityTemplateScript = $("#city-button").html();
-    var cityTemplate = Handlebars.compile(cityTemplateScript);
+    var cityTemplateString = Templates.city;
+    var cityTemplate = Handlebars.compile(cityTemplateString);
     Handlebars.registerHelper('toUpperCase', function(str) {
         return str.toUpperCase();
     });
