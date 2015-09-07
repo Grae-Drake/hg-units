@@ -194,7 +194,7 @@ header {
 .unit {
     width: 260px;
     margin: 0 4px 8px 4px;
-    min-height: 216px;
+    min-height: 225px;
     border-radius: 8px;
     box-shadow: 0 0 0 1px #222;
     display: inline-block;
@@ -259,6 +259,8 @@ header {
 }
 
 .unit-row-title {
+    display: inline-block;
+    width: 100%;
     text-align: center;
     font-size: .8em;
     font-weight: 800;
@@ -276,7 +278,16 @@ header {
 }
 
 .action-description {
+    display: inline-block;
     font-size: .8em;
+    line-height: 100%;
+    padding: 0 8px 8px 8px;
+    margin: 0;
+    background: #D1D1BA;
+    position: absolute;
+    top:0;
+    left: 0;
+
 }
 
 footer {
