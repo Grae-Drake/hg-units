@@ -40,9 +40,9 @@ Templates.unit = [
                     '{{#if cost.crystal}}{{ cost.crystal }} Crystal {{/if}}',
                     '{{#if cost.wood}}{{ cost.wood }} Wood {{/if}}',
                 '</p>',
-                '<div>',
+                '<div class="unit-rarity">',
                     '<div class="rarity-icon {{toLowerCase rarity}}"></div>',
-                    '<p class="unit-rarity"> {{ rarity }} </p>',
+                    '<p> {{ rarity }} </p>',
                 '</div>',
             '</div>',
 
