@@ -67,7 +67,7 @@ header {
     left: 203px;
     top: 71px;
     width: 268px;
-    background-color: #c8532f;
+    background-color: #333;
     color: #FFF;
     border-radius: 8px;
     padding: 12px 12px 0 12px;
@@ -78,7 +78,7 @@ header {
 
 .search-instructions span {
     font-family: "Courier New", Courier, monospace;
-    background-color: #9F2A06;
+    font-style: italic;
     padding: 0 8px 0 8px;
 }
 
@@ -214,7 +214,7 @@ header {
 
 .unit-top-text {
     display: inline-block;
-    width: 159px;
+    width: 173px;
     margin: 0;
 
 }
@@ -231,16 +231,67 @@ header {
     margin: 0;
 }
 
+.resource-icon {
+    height: 16px;
+    width: 16px;
+    margin-right: -5px;
+    display: inline-block;
+    background-image: url("../images/hg-iconSheet.png");
+    background-repeat: no-repeat;
+    background-size: 256px 256px;
+}
+
+.gold-icon {
+    background-position: -64px 0px;
+}
+
+.crystal-icon {
+    background-position: -80px 0px;
+}
+
+.wood-icon {
+    background-position: -96px 0px;
+}
+
 .unit-cost {
     font-size: .8em;
     height: 19px;
-    margin: 0 0 0 16px;
+    max-width: 135px;
+    margin: 0 0 0 4px;
+    display: inline-block;
+    overflow: hidden;
+}
 
+.rarity-icon {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    background-image: url("../images/rarities.png");
+    background-repeat: no-repeat;
+    background-size: 80px;
+    vertical-align: text-bottom;
+}
+
+.uncommon {
+    background-position: -16px;
+}
+
+.rare {
+    background-position: -32px;
+}
+
+.ultra.rare {
+    background-position: -48px;
+}
+
+.legendary {
+    background-position: -64px;
 }
 
 .unit-rarity {
     font-size: .8em;
-    margin: 0 0 4px 16px;
+    margin: 0 0 4px 0;
+    display: inline-block;
 }
 
 .unit-bottom {
