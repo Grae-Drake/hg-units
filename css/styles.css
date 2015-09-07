@@ -266,6 +266,7 @@ header {
     height: 16px;
     width: 16px;
     display: inline-block;
+    margin-top: -8px;
     background-image: url("../images/rarities.png");
     background-repeat: no-repeat;
     background-size: 80px;
