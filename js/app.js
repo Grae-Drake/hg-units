@@ -31,7 +31,7 @@ $(document).ready(function() {
     $("#search").on("keyup", searchFilter);
 
     $(document).on("keyup", function(e) {
-        if (e.which === 191) {$('#search').focus();}
+        if (e.which === 191) {$('#search').focus().select();}
     });
 
     $('.units').on('change', '.unit-count input', function() {
