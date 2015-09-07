@@ -30,6 +30,35 @@ $(document).ready(function() {
 
     $("#search").on("keyup", searchFilter);
 
+    $(document).on("keyup", function(e) {
+        if (e.which === 191) {$('#search').focus();}
+    });
+
+    $('.units').on('change', '.unit-count input', function() {
+        var $this = $(this);
+        var unitName = $this.parents(".unit").attr('id');
+        var newVal = $this.val() || 0;
+        localStorage[unitName] = newVal;
+        $this.val(newVal);
+    });
+
+    $('.units').on('click', '.unit-count .fa-plus', function() {
+        var $this = $(this);
+        currentValue = parseInt($this.siblings("input").val(), 10);
+        $this.siblings("input").val(Math.min(currentValue + 1, 99));
+        var unitName = $this.parents(".unit").attr('id');
+        localStorage[unitName] = $this.siblings("input").val();
+    });
+
+    $('.units').on('click', '.unit-count .fa-minus', function() {
+        var $this = $(this);
+        currentValue = parseInt($this.siblings("input").val(), 10);
+        $this.siblings("input").val(Math.max(currentValue - 1, 0));
+        var unitName = $this.parents(".unit").attr('id');
+        localStorage[unitName] = $this.siblings("input").val();
+    });
+
+
 
     // Templating.
     var unitTemplateScript = Templates.unit;
@@ -192,7 +221,7 @@ function extractUnitData(hgJson) {
         }
         
         var card = {
-            "name": attributes.name,
+            "name": attributes.name.toLowerCase(),
             "cost": {"gold": parseInt(attributes.g, 10),
                      "crystal": parseInt(attributes.c, 10),
                      "wood": parseInt(attributes.w, 10)},
@@ -266,6 +295,7 @@ function populateUnits(units, unitTemplate) {
     var unitNodes = [];
     for (var i = 0 ; i < units.length ; i++) {
         var unit = units[i];
+        unit["collection"] = localStorage[unit.name] || 0;
         unit["cache"] = unit["cache"] || $(unitTemplate(unit));
         unitNodes.push(unit["cache"]);
 

@@ -1,16 +1,16 @@
 Templates = {};
 
 Templates.city = [
-    '<button class="city" data-city-id="{{id}}">',
+    '<button class="city" data-city-id="{{id}}" tabindex="-1">',
         '{{ name }}',
     '</button>'
 ].join("")
 
 Templates.unit = [
-    '<div class="unit" data-search-text="{{searchText}}">',
+    '<div id="{{name}}" class="unit" data-search-text="{{searchText}}">',
         '<div class="unit-top">',
 
-            '<a target="_blank" href="',
+            '<a target="_blank" tabindex="-1" href="',
                 '{{#if compendiumId}}',
                   'http://www.heartshapedgames.com/forums/showthread.php?tid=826&pid={{compendiumId}}',
                 '{{else}}',
@@ -52,6 +52,13 @@ Templates.unit = [
                 '{{#each battleActions}}',
                     '<p class="unit-action {{ this.type }}" title="{{this.description}}"> {{ this.value }} {{ toUpperCase this.type }} </p>',
                 '{{/each}}',
+            '</div>',
+            
+            '<div class="unit-count">',
+                '<span>Collection:</span>',
+                '<i class="fa fa-plus"></i>',
+                '<input type="number" min="0" max="99" value="{{collection}}">',
+                '<i class="fa fa-minus"></i>',
             '</div>',
 
         '</div>',

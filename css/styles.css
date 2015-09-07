@@ -277,17 +277,51 @@ header {
     color: white;
 }
 
-.action-description {
-    display: inline-block;
-    font-size: .8em;
-    line-height: 100%;
-    padding: 0 8px 8px 8px;
-    margin: 0;
-    background: #D1D1BA;
+.unit-count {
     position: absolute;
-    top:0;
-    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0 12px 10px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
 
+.unit-count span {
+    font-weight: 600;
+    margin-right: 12px;
+}
+
+.unit-count i {
+    margin: 0 4px 0 4px;
+}
+
+.unit-count i:hover {
+    color:#FFF;
+    cursor: pointer;
+}
+
+.unit-count input {
+    color: #fff;
+    background-color: #333;
+    outline: none;
+    margin:0 0 0 0;
+    padding: 2px 2px 0 2px;
+    text-align: center;
+    height: 28px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* Remove number input spinner */
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}   
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 footer {
